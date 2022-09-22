@@ -1,16 +1,14 @@
 <template>
-  <footer class="footer">
+  <footer >
     <div class="container">
       <div class="row">
         <div class="col-md-6"> 
           
-          <!-- Heading Block -->
           <div class="heading-block margin-bottom-80">
             <h6 >contact us</h6>
 
           </div>
           
-          <!-- Contact Info -->
           <ul >
             <li >
               <div > <i class="icon-pointer"></i> </div>
@@ -37,10 +35,7 @@
         <div class="col-md-6">
           <div class="contact"> 
             
-            <!-- Success Msg -->
-           
-            
-            <!-- FORM -->
+        
             <form >
               <ul>
                 <li >
@@ -69,12 +64,12 @@
       <!-- Rights -->
       <div>
         <div class="social-icons">
-             <a href="#."><i class="icon-social-facebook"></i></a>
-              <a href="#."><i class="icon-social-twitter"></i></a> 
-              <a href="#."><i class="icon-social-dribbble"></i></a>
-               <a href="#."><i class="icon-social-tumblr"></i></a> 
+             <a href="#"><i class="fas fa-facebook"></i></a>
+              <a href="#."><i class="fas fa-twitter"></i></a> 
+              <a href="#."><i class="fas fa-dribbble"></i></a>
+               <a href="#."><i class="fas fa-tumblr"></i></a> 
             </div>
-        <p>© 1998–2015 KANA, Inc. All rights reserved.</p>
+        <p>© 2012-2022 KANA, Inc. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -87,5 +82,9 @@ export default {
 </script>
 
 <style>
-
+footer{
+    display: flex;
+    margin-top: auto ;
+    background: #191b1f;
+}
 </style>

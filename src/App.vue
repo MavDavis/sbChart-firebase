@@ -1,7 +1,9 @@
 <template>
- <navbar/>
+<div class="app">
+  <navbar/>
   <router-view/>
   <Footer/>
+</div>
 </template>
 <script>
 
@@ -19,7 +21,9 @@ components:{
 </script>
 
 <style lang="scss">
-
+.app{
+  position: relative;
+}
 
 
 </style>

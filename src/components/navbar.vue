@@ -1,5 +1,5 @@
 <template>
- <div class="navbar">
+ <div class="navbar" v-if="$store.state.scrolled">
 	<header class="header">
     <div class="sticky">
         <div class="logo"> <img src="../assets/logo.png" alt=""> </div>
@@ -44,16 +44,31 @@ data(){
 		mobileScreenOpened:false,
 	}
 },
-mounted() {
-    if (window.innerWidth < 850) {
-      this.mobileScreen = true;
-    } else {
-      this.mobileScreen = false;
+// mounted() {
+//     if (window.innerWidth < 850) {
+//       this.mobileScreen = true;
+// 	  this.$store.commit('changedScrolledTofalse')
 
-    }
-  },
+//     } else {
+//       this.mobileScreen = false;
+// 	  this.$store.commit(' changedScrolledTotrue')
+
+//     }
+//   },
   created() {
-    window.addEventListener("resize", this.checkForScreenWidth);
+    window.addEventListener("resize", () =>{
+      if (window.innerWidth < 850) {
+        this.mobileScreen = true;
+		this.$store.commit('changedScrolledTotrue')
+		console.log('small');
+      } else {
+        this.mobileScreen = false;
+		this.$store.commit('changedScrolledTofalse')
+		console.log('big');
+
+      }
+    }
+	)
   },
   methods: {
     toggleMobileScreenOpened() {
@@ -62,25 +77,34 @@ mounted() {
     checkForScreenWidth() {
       if (window.innerWidth < 850) {
         this.mobileScreen = true;
+		this.$store.commit('changedScrolledTofalse')
+		console.log('small');
       } else {
         this.mobileScreen = false;
+		this.$store.commit(' changedScrolledTotrue')
+		console.log('big');
+
       }
     }
-}}
+}
+}
 </script>
 
 <style scoped lang="scss">
 	.navbar{
 		background-color: rgba(0, 0, 0, 0.75);
+position:relative;
+width: 100%;
+height: fit-content;
 
 header {
-	display: inline-block;
+	background-color: rgba(0, 0, 0, 0.85);
+	position:fixed;
 	width: 100%;
 	z-index: 999;
 	left: 0px;
 	right: 0px;
 	.sticky {
-position: sticky;
 display: flex;
 padding:.72rem  10%;
 justify-content: space-between;
@@ -137,6 +161,9 @@ nav{
 		width:30px;
 		height:30px;
 		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
 		border-radius: 10px;
 		justify-self: flex-end;
 		float: right;
@@ -149,7 +176,10 @@ nav{
 }
 	}
 }
-}}
+}
+}
+
+
 .mobile-links{
 	display: inline-block;
 	width: 100%;
