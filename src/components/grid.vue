@@ -1,7 +1,6 @@
 <template>
   <section>
-    <h1>
-    </h1>
+
   </section>
 </template>
 
@@ -13,9 +12,9 @@ export default {
 
 <style scoped>
 section{
-    left: 0;
-    min-height: 100vh !important;
-    width:100vw;
-    background: yellowgreen;
+    height: 100vh;
+    width: 100%;
+    background: #000;
+
 }
 </style>

@@ -44,27 +44,23 @@ data(){
 		mobileScreenOpened:false,
 	}
 },
-// mounted() {
-//     if (window.innerWidth < 850) {
-//       this.mobileScreen = true;
-// 	  this.$store.commit('changedScrolledTofalse')
 
-//     } else {
-//       this.mobileScreen = false;
-// 	  this.$store.commit(' changedScrolledTotrue')
-
-//     }
-//   },
   created() {
+window.addEventListener('DOMContentLoaded', ()=>{
+	if (window.innerWidth < 850) {
+        this.mobileScreen = true;
+      } else {
+        this.mobileScreen = false;
+
+      }
+})
     window.addEventListener("resize", () =>{
       if (window.innerWidth < 850) {
         this.mobileScreen = true;
 		this.$store.commit('changedScrolledTotrue')
-		console.log('small');
       } else {
         this.mobileScreen = false;
 		this.$store.commit('changedScrolledTofalse')
-		console.log('big');
 
       }
     }
@@ -74,18 +70,7 @@ data(){
     toggleMobileScreenOpened() {
       this.mobileScreenOpened = !this.mobileScreenOpened;
     },
-    checkForScreenWidth() {
-      if (window.innerWidth < 850) {
-        this.mobileScreen = true;
-		this.$store.commit('changedScrolledTofalse')
-		console.log('small');
-      } else {
-        this.mobileScreen = false;
-		this.$store.commit(' changedScrolledTotrue')
-		console.log('big');
-
-      }
-    }
+  
 }
 }
 </script>
