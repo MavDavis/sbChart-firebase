@@ -1,11 +1,12 @@
 <template>
   <footer>
     <div class="container">
+      <h3>contact us</h3>
+
+<hr />
       <div class="row">
         <div class="col-md-6 col-1">
-          <h3>contact us</h3>
-
-          <hr />
+       
           <ul>
             <li>
               <i class="fa fa-map-marker"></i>
@@ -30,10 +31,10 @@
             <a href="#."><i class="fa fa-dribbble"></i></a>
             <a href="#."><i class="fa fa-whatsapp"></i></a>
           </div>
-          <p>© 2012-2022 KANA, Inc. All rights reserved.</p>
+          <p class="p">© 2012-2022 KANA, Inc. All rights reserved.</p>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 col-2">
           <form>
             <ul>
               <li>
@@ -83,14 +84,36 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+
+
+
+
+
 footer {
+
+  
   position: relative;
   margin-top: auto;
   background: #191b1f;
   color: var(--light);
   .container {
     width: 100vw;
-    height: 100vh;
+    min-width: 100vw;
+    min-height: 100vh;
+
+    hr {
+            width: 200px;
+            height: 1px;
+            background: #666666;
+          }
+          h3 {
+            padding: 2rem 0;
+            padding-left: 10%;
+            text-transform: uppercase;
+            font-size: 16px;
+            font-weight: normal;
+            color: #666666;
+          }
     .row {
       display: flex;
       justify-content: space-between;
@@ -98,6 +121,7 @@ footer {
       position: relative;
       width: 100%;
       padding: 4rem 10%;
+
       .col-md-6 {
         position: relative;
         width: 40%;
@@ -109,7 +133,40 @@ footer {
         form {
           position: relative;
           width: 100%;
-          input,
+
+          input, textarea{
+	// display: inline-block;
+  position: relative;
+	width: 100%;
+	padding: 0px;
+	border: 1px solid;
+	border-color: transparent;
+	background: none;
+	font-size: 16px;
+	border: none;
+	box-shadow: none;
+	border-radius: 0px;
+	background: none;
+	color: #fff;
+	padding: 0px;
+	font-size: 16px;
+	border-bottom: 1px solid #666666;
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	-ms-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+}
+input{
+	height: 50px;
+
+}
+textarea{
+	height: 120px !important;
+
+}      
+
+input,
           .btn {
             margin: 1rem 0;
           }
@@ -123,17 +180,7 @@ footer {
 
         }
         &.col-1 {
-          hr {
-            width: 150px;
-            height: 1px;
-            background: #666666;
-          }
-          h3 {
-            text-transform: uppercase;
-            font-size: 16px;
-            font-weight: normal;
-            color: #666666;
-          }
+        
           li{
             display: flex;
             margin: 2em 0;
@@ -156,19 +203,33 @@ a{
   &:nth-child(1){
     margin-left: 0;
   }
-
+@media(max-width:350px){
+  margin: 0 1rem;
+}
   &:hover{
     transform: translateY(-5px);
     color:#fff;
   }
 }
           }
-          p
+          .p
           {
             color: #666666;
-
+margin: 2rem 0;
           }
         }
+      }
+      @media(max-width:850px){
+        flex-direction: column-reverse;
+        // align-items: center;
+        .col-md-6{
+          width:100%;
+
+
+        }
+      }
+      @media(max-width:500px){
+     align-items: center;
       }
     }
   }

@@ -45,33 +45,3 @@
 	background: #666666;
 	color: #fff;
 }
-input{
-	height: 50px;
-
-}
-textarea{
-	height: 120px !important;
-
-}
-input, textarea{
-	display: inline-block;
-	width: 100%;
-	padding: 0px;
-	border: 1px solid;
-	border-color: transparent;
-	background: none;
-	font-size: 16px;
-	border: none;
-	box-shadow: none;
-	border-radius: 0px;
-	background: none;
-	color: #fff;
-	padding: 0px;
-	font-size: 16px;
-	border-bottom: 1px solid #666666;
-	-webkit-transition: all 0.4s ease-in-out;
-	-moz-transition: all 0.4s ease-in-out;
-	-o-transition: all 0.4s ease-in-out;
-	-ms-transition: all 0.4s ease-in-out;
-	transition: all 0.4s ease-in-out;
-}
