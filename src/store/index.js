@@ -3,6 +3,7 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     scrolled:false,
+    loggedIn:false
   },
   getters: {
  

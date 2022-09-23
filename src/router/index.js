@@ -5,7 +5,7 @@ import Gallery from '../views/Gallery.vue'
 import User from '../views/User.vue'
 import Volunteer from '../views/Volunteer.vue'
 import AboutView from '../views/AboutView.vue'
-
+import Login from '../views/Login.vue'
 const routes = [
   {
     path: '/',
@@ -15,7 +15,13 @@ const routes = [
     path: '/about',
     name: 'AboutView',
     component: AboutView
-  },  {
+  }, 
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  }, 
+   {
     path: '/contact',
     name: 'Contact',
     component: Contact

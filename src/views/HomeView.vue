@@ -1,15 +1,15 @@
 <template>
-  <Swiper/>
+  <Swipers/>
   <absolute/>
   <Grid/>
 </template>
 
 <script>
-import Swiper from '@/components/swiper.vue';
 import Absolute from '@/components/absolute.vue';
 import Grid from '@/components/grid.vue';
+import Swipers from '@/components/swipers.vue';
 export default {
-    components: { Swiper, Absolute, Grid }
+    components: {  Absolute, Grid, Swipers }
 }
 </script>
 
