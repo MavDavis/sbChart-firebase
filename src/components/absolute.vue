@@ -34,6 +34,7 @@ section{
     left: 0;
     min-height: 100vh !important;
     width:100vw;
+    padding: 1rem 0;
     height: calc(100vh + 200px);
     background: #fff;
 @media(max-width: 850px){
