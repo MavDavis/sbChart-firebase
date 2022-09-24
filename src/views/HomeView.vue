@@ -8,7 +8,7 @@
   <div class="card-div">
     <CardTwo v-for="card in cardInTwo" :key="card" :img="card"/></div>
   </section>
- 
+ <HomeDonate/>
 </template>
 
 <script>
@@ -16,8 +16,9 @@ import Absolute from '@/components/absolute.vue';
 import Grid from '@/components/grid.vue';
 import Swipers from '@/components/swipers.vue';
 import CardTwo from '@/components/cardTwo.vue';
+import HomeDonate from '@/components/Home-Donate.vue';
 export default {
-    components: { Absolute, Grid, Swipers, CardTwo },
+    components: { Absolute, Grid, Swipers, CardTwo, HomeDonate },
     data(){
       return{
         cardInTwo:["", "", "", ""],

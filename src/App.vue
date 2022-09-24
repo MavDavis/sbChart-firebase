@@ -1,7 +1,10 @@
 <template>
-  <div class="app">
+  <div class="app" >
     <navbar />
-    <router-view />
+    <div @click="changeStateOptions()">
+      <router-view />
+    </div>
+
     <Footer />
   </div>
 </template>
@@ -77,7 +80,13 @@ export default {
       false
     );
   },
-  methods: {},
+  methods: {
+    changeStateOptions(){
+      if(this.$store.state.showOptions === true){
+        this.$store.commit('changeStateshowOptions')
+      }
+    }
+  },
   components: {
     Navbar,
     Footer,

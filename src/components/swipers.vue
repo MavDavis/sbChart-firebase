@@ -4,7 +4,6 @@
       :modules="modules"
       :slides-per-view="1"
       :space-between="50"
-      navigation
       :pagination="{ clickable: true }"
       @swiper="onSwiper"
       @slideChange="onSlideChange"
@@ -14,7 +13,7 @@
     <swiper-slide class="slide slide1">
         <header class="header" v-if="!$store.state.scrolled">
     <div class="sticky">
-        <div class="logo"> <img src="../assets/logo.png" alt=""> </div>
+        <div class="logo"> <img src="../assets/logo2.png" alt=""> </div>
         
         <nav class="webimenu"> 
           <ul class="ownmenu">
@@ -34,7 +33,7 @@
       </swiper-slide>
       <swiper-slide class="slide slide2"><header class="header" v-if="!$store.state.scrolled">
     <div class="sticky">
-        <div class="logo"> <img src="../assets/logo.png" alt=""> </div>
+        <div class="logo"> <img src="../assets/logo2.png" alt=""> </div>
         
         <nav class="webimenu"> 
           <ul class="ownmenu">
@@ -53,7 +52,7 @@
   </header></swiper-slide>
       <swiper-slide class="slide slide3"><header class="header" v-if="!$store.state.scrolled">
     <div class="sticky">
-        <div class="logo"> <img src="../assets/logo.png" alt=""> </div>
+        <div class="logo"> <img src="../assets/logo2.png" alt=""> </div>
         
         <nav class="webimenu"> 
           <ul class="ownmenu">
@@ -181,7 +180,7 @@
     }
     
         &.slide1{
-          background: orange;
+          background: rgb(75, 62, 41);
         }
         &.slide2{
           background: rgb(228, 80, 80);

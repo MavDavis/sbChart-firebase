@@ -3,7 +3,9 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     scrolled:false,
-    loggedIn:false
+    loggedIn:false,
+    showOptions:false
+
   },
   getters: {
  
@@ -11,6 +13,9 @@ export default createStore({
   mutations: {
     changedScrolledTotrue(state){
       state.scrolled = true
+    },
+    changeStateshowOptions(state){
+      state.showOptions = ! state.showOptions 
     },
     changedScrolledTofalse(state){
       state.scrolled = false

@@ -17,7 +17,8 @@ props:['img']
     height: 400px;
  transition: all .2s ease-in;
     &:hover{
-        transform: rotate(-3deg);
+      cursor: pointer;
+        transform: rotate(7deg);
     }
 }
 </style>

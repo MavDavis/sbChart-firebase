@@ -2,7 +2,7 @@
   <section>
     <div class="flex">
       <div class="text">
-        <h4>Who we are</h4>
+        <h4 class="font-bold">Who we are</h4>
         <div class="absolute-hr"><hr></div>
 
         <h1>We are The Embassy of Heaven. We Live To <span>Equip</span>, <span>Dominate</span> and <span>Whatever</span>.</h1>
@@ -10,8 +10,8 @@
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo fuga saepe labore reiciendis animi culpa. Eligendi aut illum quos explicabo repellat sapiente id nihil assumenda. Laborum voluptate nulla consectetur quibusdam?</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi totam deleniti officia? Veniam, blanditiis?</p></div>
         <div class="btn">
-          <router-link to="/about">Learn More</router-link>
-        <div class="btn-absolute"><router-link to="/about">Learn More</router-link></div>
+          <router-link to="/about">More About</router-link>
+        <div class="btn-absolute"><router-link to="/about">More About</router-link></div>
       </div>
       </div>
       <div class="img">
