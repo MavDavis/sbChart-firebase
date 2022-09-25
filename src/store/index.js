@@ -25,10 +25,9 @@ export default createStore({
     Login(state) {
 console.log(state.userEmail,  state.userPassWord)
       if (state.userEmail === "" || state.userPassWord === "") {
-        console.log('err');
         return;
       } else {
-        signInWithEmailAndPassword(firebaseAuth, this.email, this.password)
+        signInWithEmailAndPassword(firebaseAuth, state.userEmail, state.userPassWord)
           .then((userCredential) => {
             console.log(userCredential.user.uid);
             state.loggedIn = true

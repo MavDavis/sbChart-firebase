@@ -3,7 +3,7 @@
     <div class="flex flex-col w-screen h-full my-5 justify-center items-center">
       <h2 class="text-4xl text-bold mt-8 mb-5">Make A Commitment</h2>
 
-      <div class="w-full flex justify-center items-center relative mb-5 px-5">
+      <div class="w-full flex justify-center items-center relative mb-5 px-5 border-r-1">
         <div class="p-2 w-1/4">Price Range:</div>
 
         <div
@@ -15,6 +15,7 @@
             border
             p-2
             w-1/4
+            h-70
             justify-center
             items-center
             flex

@@ -35,6 +35,7 @@ section {
 
   }
   .item{
+    margin-bottom: 2rem;
 
   }
   &.flex1{

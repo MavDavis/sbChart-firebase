@@ -34,14 +34,13 @@ export default {
 
 <style scoped lang="scss">
 section{
-    left: 0;
-    min-height: 100vh !important;
-    width:100vw;
-    padding: 1rem 0;
-    height: calc(100vh + 200px);
+     width:100vw;
+    min-height: calc(100vh + 200px);
     background: #fff;
-@media(max-width: 850px){
   height: fit-content;
+  margin: 4rem 0;
+
+@media(max-width: 850px){
 }
     .flex{
 display: flex;
@@ -138,6 +137,16 @@ p:nth-child(3){
 flex-direction: column;
 .text, .img{
   width: 100%;
+
+}
+.text{
+  min-height: 100vh;
+  height: fit-content;
+  margin-bottom: 2rem;
+}
+.img{
+  min-height: 100vh;
+  height: 100vh;
 }
 }
     }
