@@ -18,7 +18,7 @@
           </h1>
           <form class="bg-white px-5 pt-6 pb-8 mb-4">
             <p
-              v-if="error"
+              v-if="$store.state.error"
               class="
                 error
                 text-center
@@ -28,7 +28,7 @@
                 font-semibold
               "
             >
-              {{ errMssg }}
+              {{ $store.state.errMssg }}
             </p>
             <div class="mb-4 relative">
               <i class="fas fa-user absolute top-3 left-3 text-dark z-10"></i>
@@ -45,55 +45,17 @@
                   leading-tight
                   focus:outline-none focus:shadow-outline
                 "
-                v-model="firstname"
+                v-model="$store.state.Username"
                 type="text"
                 required
-                placeholder="Firstname"
+                placeholder="Enter Legal Name"
               />
             </div>
             <div class="mb-4 relative">
               <i class="fas fa-user absolute top-3 left-3 text-dark z-10"></i>
-              <input
-                class="
-                  bg-gray-100
-                  appearance-none
-                  border
-                  rounded
-                  w-full
-                  py-2
-                  px-8
-                  text-dark
-                  leading-tight
-                  focus:outline-none focus:shadow-outline
-                "
-                v-model="lastname"
-                type="text"
-                required
-                placeholder="Lastname"
-              />
+          
             </div>
-            <div class="mb-4 relative">
-              <i class="fas fa-user absolute top-3 left-3 text-dark z-10"></i>
-              <input
-                class="
-                  bg-gray-100
-                  appearance-none
-                  border
-                  rounded
-                  relative
-                  w-full
-                  py-2
-                  px-8
-                  text-dark
-                  leading-tight
-                  focus:outline-none focus:shadow-outline
-                "
-                v-model="Username"
-                type="text"
-                required
-                placeholder="Username"
-              />
-            </div>
+           
             <div class="mb-4 relative">
               <i class="fas fa-envelope absolute top-3 left-3 text-dark z-10"></i>
               <input
@@ -109,7 +71,7 @@
                   leading-tight
                   focus:outline-none focus:shadow-outline
                 "
-                v-model="email"
+                v-model="$store.state.userEmail"
                 type="email"
                 required
                 placeholder="Email"
@@ -170,11 +132,7 @@
   </template>
   
   <script>
-//   import { collection, onSnapshot } from "firebase/firestore";
-//   import { db } from "../firebase/firebaseInit";
-//   import { doc, setDoc, addDoc } from "firebase/firestore";
-//   import { createUserWithEmailAndPassword } from "firebase/auth";
-//   import { firebaseAuth } from "../firebase/firebaseInit";
+
 //   import Loading from "@/components/Loading.vue";
   export default {
       data() {

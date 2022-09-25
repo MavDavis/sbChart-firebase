@@ -59,7 +59,7 @@
                     items-center
                   "
                 >
-                  <!-- {{ $store.state.UserInitials }} -->
+                  {{ $store.state.UserInitials }}
                 </h1>
               </div>
               <div
@@ -75,18 +75,18 @@
                     items-center
                   "
                 >
-                  <!-- {{ $store.state.userFirstname }}
-                  {{ $store.state.userLastname }} -->
+                  {{ $store.state.userFirstname }}
+                  {{ $store.state.userLastname }}
                 </h1>
                 <p class="sm text-white flex w-full items-center justify-start">
                   <i class="mr-2 fas fa-envelope text-sm text-white"></i
                   >
-                  <!-- {{ $store.state.userEmail }} -->
+                  {{ $store.state.userEmail }}
                 </p>
                 <p class="sm text-white flex w-full items-center justify-start">
                   <i class="mr-2 fas fa-user text-sm text-white"></i
                   >
-                  <!-- {{ $store.state.userUsername }} -->
+                  {{ $store.state.userUsername }}
                 </p>
               </div>
             </div>
@@ -116,7 +116,7 @@
     </header>
     <div class="mobile-links" v-if="mobileScreenOpened">
       <nav class="">
-        <ul class="">
+        <ul class="mt-5">
           <li @click="toggleMobileScreenOpened" class="active">
             <router-link to="/">Home </router-link>
           </li>
@@ -143,7 +143,7 @@
 export default {
   data() {
     return {
-      mobileScreen: false,
+      mobileScreen: null,
       mobileScreenOpened: false,
     };
   },
@@ -151,7 +151,9 @@ export default {
   created() {
     window.addEventListener("DOMContentLoaded", () => {
       if (window.innerWidth < 850) {
-        this.mobileScreen = true;
+        this.$store.commit('changedScrolledTotrue')
+        this.mobileScreen = true
+        console.log(this.mobileScreen);
       } else {
         this.mobileScreen = false;
       }
@@ -238,6 +240,26 @@ export default {
             &:hover:after {
               width: 15px;
             }
+
+           &.router-link-active:after{
+   
+              display: block;
+
+              position: absolute;
+              left: 0;
+              bottom: -5px;
+              width: 15px;
+              height: 2px;
+              background-color: #fff;
+              content: "";
+              -webkit-transition: all 0.2s;
+              -moz-transition: all 0.2s;
+              -o-transition: all 0.2s;
+              transition: all 0.2s;
+            }
+           
+  
+
           }
         }
         .menu-toggle {

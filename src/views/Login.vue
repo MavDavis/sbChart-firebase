@@ -14,7 +14,7 @@
       <h1 class="font-semibold tracking-wider text-xl text-center">Login </h1>
       <form class="bg-white px-5 pt-6 pb-8 mb-4">
         <p
-              v-if="error"
+              v-if="$store.state.error"
               class="
                 error
                 text-center
@@ -24,7 +24,7 @@
                 font-semibold
               "
             >
-              {{ errMssg }}
+              {{ $store.state.errMssg }}
             </p>
           <div class="mb-4 relative ">
           <i class="fas fa-envelope absolute top-3 left-3 text-dark z-10"></i>        <input
@@ -40,7 +40,7 @@
               leading-tight
               focus:outline-none focus:shadow-outline
             "
-            v-model="email"
+            v-model="$store.state.userEmail"
             type="email"
             required
             placeholder="Email"
@@ -66,12 +66,29 @@
               leading-tight
               focus:outline-none focus:shadow-outline
             "
-            v-model="password"
+            v-model="$store.state.userPassWord"
             :type="inputField"
             placeholder="Password"
           />
         </div>
         <div class="flex flex-col items-center justify-between">
+         
+          <button
+          @click="Login()"
+            class="
+              bg-black
+              hover:tracking-wider
+              text-white
+              font-bold
+              py-2
+              px-4
+              rounded-full
+              focus:outline-none focus:shadow-outline
+            "
+            type="button"
+          >
+            Sign In
+          </button>
           <router-link
             :to="{ name: 'ForgotPassword' }"
             class="
@@ -85,22 +102,6 @@
           >
             Forgot Password?
           </router-link>
-          <button
-          @click="Login()"
-            class="
-              bg-dark
-              hover:tracking-wider
-              text-white
-              font-bold
-              py-2
-              px-4
-              rounded-full
-              focus:outline-none focus:shadow-outline
-            "
-            type="button"
-          >
-            Sign In
-          </button>
         </div>
       </form>
     </div>
@@ -112,17 +113,12 @@
   </template>
   
   <script>
-    // import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-    // import { firebaseAuth } from "../firebase/firebaseInit";
+
 //   import Loading from "@/components/Loading.vue";
   export default {
       data() {
           return {
-              email: "",
-              password: "",
-              loading:false,
-              error:false,
-              errMssg:'',
+            
               inputField:'password'
           };
       },
@@ -134,29 +130,19 @@
               else {
                   this.inputField = "password";
               }},
-    //       Login() {
-    //         if(this.email === '' || this.password === ''){
-    //           return
-    //         }else{
-    //           this.loading = true;
-    //           let self = this;
-    //           signInWithEmailAndPassword(firebaseAuth, this.email, this.password)
-    //               .then((userCredential) => {
-    //                 console.log(userCredential.user.uid);
-    //               self.$router.push({ name: "Home" });
-    //               this.loading = false;
-    //           })
-    //               .catch((error) => {
-    //                 this.loading= false
-    //                 this.error = true;
-    //               this.errMssg = error.message;
-    //               setTimeout(() => {
-    //                   this.error = false;
-    //                   this.errMssg = "";
-    //               }, 20000);
-    //           });
-    //       }
-    //   },
+         Login() {
+           
+              this.loading = true;
+             this.$store.commit('Login')
+             if(this.$store.state.loggedIn){
+              this.loading = false
+              this.$router.push('/')
+             }
+              
+          
+             
+             
+      },
     },
   }
   </script>

@@ -102,4 +102,7 @@ export default {
   max-width: 100vw;
   overflow-x: hidden;
 }
+li{
+
+}
 </style>

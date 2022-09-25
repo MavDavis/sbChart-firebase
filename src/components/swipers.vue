@@ -11,6 +11,7 @@
 
     >
     <swiper-slide class="slide slide1">
+      <div class="absolute"></div>
         <header class="header" v-if="!$store.state.scrolled">
     <div class="sticky">
         <div class="logo"> <img src="../assets/logo2.png" alt=""> </div>
@@ -31,7 +32,11 @@
       </div>
   </header>
       </swiper-slide>
-      <swiper-slide class="slide slide2"><header class="header" v-if="!$store.state.scrolled">
+      <swiper-slide class="slide slide2">
+        <div class="absolute"></div>
+
+        <header class="header" v-if="!$store.state.scrolled">
+
     <div class="sticky">
         <div class="logo"> <img src="../assets/logo2.png" alt=""> </div>
         
@@ -50,7 +55,10 @@
         </nav>
       </div>
   </header></swiper-slide>
-      <swiper-slide class="slide slide3"><header class="header" v-if="!$store.state.scrolled">
+      <swiper-slide class="slide slide3">
+        <div class="absolute"></div>
+
+        <header class="header" v-if="!$store.state.scrolled">
     <div class="sticky">
         <div class="logo"> <img src="../assets/logo2.png" alt=""> </div>
         
@@ -113,9 +121,17 @@
         .slide{
           position:relative;
           min-width:100vw;
-          width: 100%;
-      min-height:100vh;
-    
+          width: 100vw;
+          min-height:100vh;
+          z-index: 100;
+     .absolute{
+height: 100%;
+width:100%;
+position: absolute;
+top: 0;
+left: 0;
+background: rgba(0, 0, 0, 0.5);
+     }
         header {
         position:relative;
         width: 100%;
@@ -180,13 +196,17 @@
     }
     
         &.slide1{
-          background: rgb(75, 62, 41);
-        }
+          background: url(../assets/slide1.jpg) no-repeat center center ; 
+          background-size: cover;   
+           }
         &.slide2{
-          background: rgb(228, 80, 80);
-        }   &.slide3{
-          background: rgb(175, 82, 236);
-        }
+          background: url(../assets/slide2.jpg) no-repeat center center ;     
+          background-size: cover; 
+         }   
+          &.slide3{
+            background: url(../assets/slide3.jpg) no-repeat center center ;
+            background-size: cover;
+          }
         }
       }
  

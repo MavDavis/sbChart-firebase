@@ -5,10 +5,13 @@
         <h4 class="font-bold">Who we are</h4>
         <div class="absolute-hr"><hr></div>
 
-        <h1>We are The Embassy of Heaven. We Live To <span>Equip</span>, <span>Dominate</span> and <span>Whatever</span>.</h1>
+        <h1>We are The Embassy of Heaven. We Live To <span>Win,</span> <span> Equip</span>, <span>Deploy</span>  supernatural believers everywhere taking over every sphere..</h1>
         <div class="p">
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo fuga saepe labore reiciendis animi culpa. Eligendi aut illum quos explicabo repellat sapiente id nihil assumenda. Laborum voluptate nulla consectetur quibusdam?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi totam deleniti officia? Veniam, blanditiis?</p></div>
+        <p>As a revival movement of people, we have heard the cry of a world that waits to know Jesus and are determined to answer it with His presence. We believe that this is the hour for the Church to arise and shine.
+</p>
+
+        <p>Now is the time—time to arise and build for the purposes of our God as people united who are equipped and empowered to impact communities, cities, and nations for Him, bringing His manifest presence into the darkest corners of the earth.</p>
+        <p>We believe that as we join together as one, we’ll reach those who are “drawn to the brightness of our rising” (Isaiah 60), so that the world that waits to know Jesus is revived through the transformational hope that He alone can bring—as people encounter the power of the living God.</p></div>
         <div class="btn">
           <router-link to="/about">More About</router-link>
         <div class="btn-absolute"><router-link to="/about">More About</router-link></div>
@@ -112,9 +115,11 @@ h1{
   flex-direction: column;
   p{
     line-height: 1.7rem;
+    margin-bottom:2rem;
+
   }
-p:nth-child(1){
-  margin-bottom: 2rem;
+p:nth-child(3){
+  margin-bottom:0;
 }
 }
 }

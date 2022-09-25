@@ -22,7 +22,6 @@ props:["details", "heading", "p", "img"]
     height:100%;
     background: #eee;
     margin: 1rem 0;
-    border:10px solid #fff;
 
     .card-img{
         position: relative;

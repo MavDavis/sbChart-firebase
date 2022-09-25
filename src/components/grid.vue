@@ -6,13 +6,7 @@
     </div>
     <div class="col-4 item2 item"><Card heading="" p="" Details="" img=""/></div>
   </div>
-  <div class="flex">
-    <div class="clear"></div>
-
-    <div class="col-3 item3 item"><Card heading="" p="" Details="" img=""/></div>
-    <div class="col-3 item4 item"><Card heading="" p="" Details="" img=""/></div>
-    <div class="col-4 item5 item"><Card heading="" p="" Details="" img=""/></div>
-  </div>
+ 
   </section>
 </template>
 
@@ -28,7 +22,7 @@ section {
   min-height: 100vh;
   height: fit-content;
   width: 100vw;
-	background: #91a8ae;
+	background: rgb(255, 208, 120);
 
   
 
@@ -38,11 +32,9 @@ section {
   padding: 0 10%;
   position: relative;
   @media(min-width:850px){
-margin-bottom: 2rem;
 
   }
   .item{
-    margin-bottom: 2rem;
 
   }
   &.flex1{
@@ -59,36 +51,7 @@ top: 0;
 width: 100%;
 }
 }
-.col-3{
-width:27%;
-height:450px;
-position: relative;
-&.item3
-{
-  height:300px;
-  position: absolute;
-  left: 10%;
-  @media(max-width:850px){
-position: relative;
-left: 0;
-}
-}&.item4
-{
-  height:360px;
-  width:25%;
 
-  position: absolute;
-  left: 38%;
-  @media(max-width:850px){
-position: relative;
-left: 0;
-width:100%;
-
-}
-
-}
-
-}
 
 .col-4{
 height:500px;
