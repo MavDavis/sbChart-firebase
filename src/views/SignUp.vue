@@ -1,5 +1,5 @@
 <template>
-    <!-- <Loading v-if="loading"/> -->
+    <Loading v-if="$store.state.loading"/>
     <div
       class="login flex justify-center sm:justify-between items-center h-screen"
     >
@@ -45,7 +45,7 @@
                   leading-tight
                   focus:outline-none focus:shadow-outline
                 "
-                v-model="$store.state.Username"
+                v-model="$store.state.userName"
                 type="text"
                 required
                 placeholder="Enter Legal Name"
@@ -98,7 +98,7 @@
                   leading-tight
                   focus:outline-none focus:shadow-outline
                 "
-                v-model="password"
+                v-model="$store.state.userPassWord"
                 :type="inputField"
                 placeholder="Password"
               />
@@ -107,7 +107,7 @@
              
               <button
                 class="
-                  bg-dark
+                  bg-black
                   hover:tracking-wider
                   text-white
                   font-bold
@@ -133,19 +133,13 @@
   
   <script>
 
-//   import Loading from "@/components/Loading.vue";
+  import Loading from "../components/Loading.vue";
   export default {
       data() {
           return {
-              email: "",
-              password: "",
-              firstname: "",
-              lastname: "",
-              Username: "",
+          
               inputField: "password",
-              errMssg: "",
-              error: false,
-              id: "",
+             
               loading:false
           };
       },
@@ -158,65 +152,19 @@
                   this.inputField = "password";
               }
           },
-        //   async Submit() {
-        //       if (this.email === "" ||
-        //           this.Username === "" ||
-        //           this.password === "" ||
-        //           this.firstname === "" ||
-        //           this.lastname === "") {
-        //           this.error = true;
-        //           this.errMssg = "Please, fill all details.";
-        //           setTimeout(() => {
-        //               this.error = false;
-        //               this.errMssg = "";
-        //           }, 5000);
-        //       }
-        //       else if (this.password.length < 7) {
-        //           this.error = true;
-        //           this.errMssg = "Password must be minimum of eight characters";
-        //           setTimeout(() => {
-        //               this.error = false;
-        //               this.errMssg = "";
-        //           }, 5000);
-        //       }
-        //       else if (!this.email.includes("@") || !this.email.includes(".")) {
-        //           this.error = true;
-        //           this.errMssg = "Enter a valid Email";
-        //           setTimeout(() => {
-        //               this.error = false;
-        //               this.errMssg = "";
-        //           }, 5000);
-        //       }
-        //       else {
-        //         this.loading = true
-        //           createUserWithEmailAndPassword(firebaseAuth, this.email, this.password)
-        //               .then((userCredential) => {
-        //               this.id = userCredential.user.reloadUserInfo.localId;
-        //           })
-        //               .catch((err) => {
-        //                 this.loading = false
-        //               this.error = true;
-        //               this.errMssg = err.message;
-        //               setTimeout(() => {
-        //                   this.error = false;
-        //                   this.errMssg = "";
-        //               }, 10000);
-        //           })
-        //               .then(() => {
-        //               setDoc(doc(db, "Users", this.id), {
-        //                   Firstname: this.firstname,
-        //                   Email: this.email,
-        //                   password: this.password,
-        //                   Lastname: this.lastname,
-        //                   Username: this.Username,
-        //               });
-        //               this.$router.push('/')
-        //           });
-        //       }
-        //   },
+     
+      Submit() {
+       this.$store.commit('Submit')
       },
-      components: {  }
-  };
+    },
+      components: { Loading },
+      created(){
+if(localStorage.getItem('userid') != undefined){
+  this.$router.push('/')
+}
+      },
+
+  }
   </script>
   
   <style lang="scss" scoped>

@@ -9,6 +9,11 @@
   </div>
 </template>
 <script>
+  
+  import { firebaseAuth } from "./firebase"
+    import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+
 function getDocHeight() {
   var D = document;
   return Math.max(
@@ -23,13 +28,6 @@ function getDocHeight() {
 
 let winheight, docheight, trackLength, throttlescroll;
 
-function getmeasurements() {
-  winheight =
-    window.innerHeight ||
-    (document.documentElement || document.body).clientHeight;
-  docheight = getDocHeight();
-  trackLength = docheight - winheight;
-}
 
 function amountscrolled() {
   winheight =
@@ -44,21 +42,22 @@ function amountscrolled() {
   var pctScrolled = Math.floor((scrollTop / trackLength) * 100);
   return pctScrolled;
 }
-getmeasurements();
 
-window.addEventListener(
-  "resize",
-  function () {
-    getmeasurements();
-  },
-  false
-);
+
 
 import Navbar from "./components/navbar.vue";
 import Footer from "./components/Footer.vue";
 export default {
   setup() {},
   created() {
+    onAuthStateChanged(firebaseAuth, (user) => {
+      // this.$store.commit('updateUser', user);
+      if(user){
+        // console.log(user);
+        this.$store.commit('getUserData')
+      }
+  }
+)
     window.addEventListener(
       "scroll",
       ()=> {
@@ -106,3 +105,4 @@ li{
 
 }
 </style>
+

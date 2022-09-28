@@ -12,7 +12,7 @@
 
         <p>Now is the time—time to arise and build for the purposes of our God as people united who are equipped and empowered to impact communities, cities, and nations for Him, bringing His manifest presence into the darkest corners of the earth.</p>
         <p>We believe that as we join together as one, we’ll reach those who are “drawn to the brightness of our rising” (Isaiah 60), so that the world that waits to know Jesus is revived through the transformational hope that He alone can bring—as people encounter the power of the living God.</p></div>
-        <div class="btn">
+        <div class="btn mt-5">
           <router-link to="/about">More About</router-link>
         <div class="btn-absolute"><router-link to="/about">More About</router-link></div>
       </div>

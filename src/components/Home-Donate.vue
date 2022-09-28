@@ -1,11 +1,12 @@
 <template>
   <section id="homeDonate mt-5">
     <div class="flex flex-col w-screen h-full my-5 justify-center items-center">
-      <h2 class="text-4xl text-bold mt-8 mb-5">Make A Commitment</h2>
+      <h2 class="md:text-4xl text-2xl text-bold mt-8 mb-5">Make A Commitment</h2>
 
-      <div class="w-full flex justify-center items-center relative mb-5 px-5 border-r-1">
-        <div class="p-2 w-1/4">Price Range:</div>
+      <div class="w-full flex justify-center flex-col items-center h-fit relative ">
+        <div class="pl-10 mb-2 w-full  ">Price Range:</div>
 
+       <div class="w-full flex justify-center  items-center h-fit relative mb-5 px-5  ">
         <div
           v-for="range in PriceRangeArray"
           :key="range.string"
@@ -15,21 +16,25 @@
             border
             p-2
             w-1/4
-            h-70
+            border-black
+
+            min-h-fit
             justify-center
             items-center
             flex
             cursor-pointer
-           
+           select-btn
             border-r-0
           "
         >
           {{ range.string }}
         </div>
+       </div>
       </div>
-      <div class="w-full flex justify-center items-center relative mb-5 px-5">
-        <div class="p-2 w-1/4">{{ wordsRange }}</div>
+      <div class="w-full flex justify-center flex-col items-center h-fit relative">
+        <div class="pl-10 mb-2 w-full">{{ wordsRange }}</div>
 
+       <div class="w-full flex justify-center  items-center h-fit relative mb-5 px-5">
         <div
           v-for="range in priceDetailRangeArray"
           :key="range.string"
@@ -38,8 +43,11 @@
           class="
             border
             p-2
+            select-btn
+            border-black
             w-1/4
             justify-center
+            min-h-fit
             items-center
             flex
             cursor-pointer
@@ -49,6 +57,7 @@
         >
           {{ range.string }}
         </div>
+       </div>
       </div>
       <form
         class="
@@ -81,7 +90,8 @@
               leading-tight
               focus:outline-none focus:shadow-outline
             "
-            v-model="price"
+            @keypress="checkPrice()"
+            v-model="$store.state.pendingPrice"
             type="number"
             name="price"
             required
@@ -104,7 +114,7 @@
               leading-tight
               focus:outline-none focus:shadow-outline
             "
-            v-model="$store.state.Username"
+            v-model="$store.state.userName"
             type="text"
             required
             placeholder="Enter Legal Name"
@@ -125,7 +135,7 @@
               leading-tight
               focus:outline-none focus:shadow-outline
             "
-            v-model="email"
+            v-model="$store.state.userEmail"
             type="email"
             required
             placeholder="Email"
@@ -146,7 +156,7 @@
               leading-tight
               focus:outline-none focus:shadow-outline
             "
-            v-model="email"
+            v-model="$store.state.confirmUserEmail"
             type="email"
             required
             placeholder="Confirm Email"
@@ -199,6 +209,22 @@
   }
 export default {
   methods:{
+    checkPrice(){
+if(this.priceDetailRangeArray = this.PriceHundredRangeArray){
+  console.log('hy');
+if(this.price > 100000){
+  this.price = 100000
+}
+}else if(this.priceDetailRangeArray = this.PricefiveHundredRangeArray){
+  if(this.price > 500000){
+  this.price = 500000
+}
+}else if(this.priceDetailRangeArray = this.PricesixHundredRangeArray){
+  if(this.price > 900000){
+  this.price = 900000
+}
+}
+    },
     rangeActiveTwo(id){
       this.priceEnabling = false
       arrayTofalse(this.priceDetailRangeArray);
@@ -239,6 +265,7 @@ this.priceRange = "1000"
       priceEnabling: true,
       priceRange: "100,000",
       wordsRange: null,
+      price:0,
       priceDetailRangeArray:null,
       PriceRangeArray: [
         { string: "1k - 100k", active: false, id : 1 },
@@ -288,5 +315,13 @@ section {
 .btn:hover .btn-absolute {
   transform: scaleX(1);
   transform-origin: top left;
+}
+@media(max-width:700px){
+.select-btn{
+  height: 100px;
+}
+.select-btn:last-child{
+  border-right: 1px solid black;
+}
 }
 </style>

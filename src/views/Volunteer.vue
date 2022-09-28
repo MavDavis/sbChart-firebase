@@ -26,11 +26,11 @@
 
 <script>
 export default {
-  mounted() {
-    if (!this.$store.state.loggedIn) {
-      this.$router.push("./login");
-    }
-  },
+  created(){
+if(localStorage.getItem('userid') == undefined){
+  this.$router.push('/login')
+}
+      },
 };
 </script>
 

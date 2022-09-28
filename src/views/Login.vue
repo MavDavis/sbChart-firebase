@@ -1,6 +1,6 @@
 <template>
-    <!-- <Loading v-if="loading"/> -->
-      <div class="py-7 login flex justify-center sm:justify-between items-center min-h-screen relative z-50">
+    <Loading v-if="$store.state.loading"/>
+    <div class="py-7 login flex justify-center sm:justify-between items-center min-h-screen relative z-50">
           <div class=" w-full md:w-1/2">
     <p class="text-sm text-dark text-center">
       Don't have an account?
@@ -114,13 +114,21 @@
   
   <script>
 
-//   import Loading from "@/components/Loading.vue";
+  import Loading from "@/components/Loading.vue";
   export default {
       data() {
           return {
-            
+            loading:false,
               inputField:'password'
           };
+      },
+      components:{
+        Loading
+      },
+      created(){
+if(localStorage.getItem('userid') != undefined){
+  this.$router.push('/')
+}
       },
       methods: {
         toggledInputField() {
@@ -132,12 +140,7 @@
               }},
          Login() {
            
-              this.loading = true;
              this.$store.commit('Login')
-             if(this.$store.state.loggedIn){
-              this.loading = false
-              this.$router.push('/')
-             }
               
           
              

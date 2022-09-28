@@ -10,7 +10,7 @@
             v-if="mobileScreen"
             class="menu-toggle"
           >
-            <i class="fas fa-bars"></i>
+            <i class="fas fa-bars  cursor-pointer"></i>
           </div>
           <ul class="ownmenu" v-else>
             <li class="active"><router-link to="/">Home </router-link></li>
@@ -65,19 +65,7 @@
               <div
                 class="info flex flex-col justify-start items-start ml-5 w-3/4"
               >
-                <h1
-                  class="
-                    text-sm
-                    font-semibold
-                    text-white
-                    flex
-                    justify-start
-                    items-center
-                  "
-                >
-                  {{ $store.state.userFirstname }}
-                  {{ $store.state.userLastname }}
-                </h1>
+            
                 <p class="sm text-white flex w-full items-center justify-start">
                   <i class="mr-2 fas fa-envelope text-sm text-white"></i
                   >
@@ -86,7 +74,7 @@
                 <p class="sm text-white flex w-full items-center justify-start">
                   <i class="mr-2 fas fa-user text-sm text-white"></i
                   >
-                  {{ $store.state.userUsername }}
+                  {{ $store.state.userName }}
                 </p>
               </div>
             </div>
@@ -96,12 +84,12 @@
                 class="option text-white mb-2 w-full"
               >
                 <router-link to="/profile">
-                  <i class="fas text-whit fa-user mr-2"></i>profile
+                  <i class="fas text-white  fa-user mr-2"></i>view profile
                 </router-link>
               </div>
            
               <div class="option text-white mb-2 w-full">
-                <button @click="logOut()" to="/">
+                <button @click="$store.commit('logout')" to="/">
                   <i class="fas text-white mr-2 fa"></i>SignOUt
                 </button>
               </div>
@@ -110,13 +98,12 @@
 
             </li>
           </ul>
-          <div class="profile"></div>
         </nav>
       </div>
     </header>
     <div class="mobile-links" v-if="mobileScreenOpened">
-      <nav class="">
-        <ul class="mt-5">
+      <nav class="fixed w-full mobile-nav z-30">
+        <ul class="mt-5 w-full h-full relative">
           <li @click="toggleMobileScreenOpened" class="active">
             <router-link to="/">Home </router-link>
           </li>
@@ -124,14 +111,20 @@
             <router-link to="/about">About Us</router-link>
           </li>
           <li @click="toggleMobileScreenOpened">
-            <router-link to="gallery">Gallery</router-link>
+            <router-link to="/gallery">Gallery</router-link>
           </li>
 
           <li @click="toggleMobileScreenOpened">
-            <router-link to="volunteer"> Donate </router-link>
+            <router-link to="/volunteer"> Donate </router-link>
           </li>
           <li @click="toggleMobileScreenOpened">
-            <router-link to="contact"> Contact</router-link>
+            <router-link to="/contact"> Contact</router-link>
+          </li>
+          <li @click="toggleMobileScreenOpened">
+            <router-link to="/user"> Profile</router-link>
+          </li>
+          <li class="uppercase text-white" @click="$store.commit('logout'); toggleMobileScreenOpened(); ">
+logout
           </li>
         </ul>
       </nav>
@@ -187,7 +180,7 @@ export default {
     background-color: rgba(0, 0, 0, 0.85);
     position: fixed;
     width: 100%;
-    z-index: 999;
+    z-index: 9000099;
     left: 0px;
     right: 0px;
     .sticky {
@@ -207,6 +200,7 @@ export default {
 
       nav {
         width: 60%;
+
         ul {
           display: flex;
           align-items: center;
@@ -279,6 +273,9 @@ export default {
           }
           .fas {
             color: var(--primary-alt);
+            &:hover{
+              transform:translateY(-5px)
+            }
           }
         }
       }
@@ -286,6 +283,7 @@ export default {
   }
 
   .mobile-links {
+
     display: inline-block;
     width: 100%;
     z-index: 999;
@@ -295,6 +293,11 @@ export default {
     right: 0px;
 
     ul {
+      background-color: rgba(0, 0, 0, 0.75);
+top: 2rem;
+@media(max-width:600px){
+top:1.5rem;
+}
       list-style: none;
       min-height: calc(70vh);
       display: flex;
