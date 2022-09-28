@@ -51,9 +51,8 @@ export default {
   setup() {},
   created() {
     onAuthStateChanged(firebaseAuth, (user) => {
-      // this.$store.commit('updateUser', user);
+      console.log(this.$store.state.loggedOut);
       if(user){
-        // console.log(user);
         this.$store.commit('getUserData')
       }
   }

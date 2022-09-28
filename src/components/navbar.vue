@@ -83,14 +83,19 @@
               @click="$store.commit('changeStateshowOptions')"
                 class="option text-white mb-2 w-full"
               >
-                <router-link to="/profile">
+                <router-link to="/user">
                   <i class="fas text-white  fa-user mr-2"></i>view profile
                 </router-link>
               </div>
            
               <div class="option text-white mb-2 w-full">
-                <button @click="$store.commit('logout')" to="/">
+                <button v-if="!$store.state.loggedOut" @click="$store.commit('logout')" to="/">
                   <i class="fas text-white mr-2 fa"></i>SignOUt
+                </button>
+                <button v-if="$store.state.loggedOut" ><router-link to="/login">
+                  <i class="fas text-white mr-2 fa"></i>Login
+                </router-link>
+
                 </button>
               </div>
             </div>

@@ -8,7 +8,10 @@
   <div class="card-div">
     <CardTwo v-for="card in cardInTwo" :key="card" :img="card"/></div>
   </section>
- <HomeDonate/>
+  <div v-if="$store.state.loggedOut">
+    <HomeDonate />
+
+  </div>
 </template>
 
 <script>
@@ -21,7 +24,7 @@ export default {
     components: { Absolute, Grid, Swipers, CardTwo, HomeDonate },
     data(){
       return{
-        cardInTwo:["", "", "", ""],
+        cardInTwo:["", "", "","", "", "","", ""],
       }
     }
 }

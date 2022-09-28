@@ -8,9 +8,13 @@ import { firebaseAuth } from "../firebase";
 export default createStore({
   state: {
     scrolled: false,
-    loggedIn: false,
+    loggedOut: localStorage.getItem("Is-logged") === "true",
+
+    showOptions: false,
     showOptions: false,
     UserInitials: "",
+    errorForDonate:"",
+    errordCheck:false,
     userName: "",
     pendingPrice:"",
     userEmail: "",
@@ -24,10 +28,11 @@ export default createStore({
   getters: {},
   mutations: {
     Login(state) {
-      state.loading = true;
       if (state.userEmail === "" || state.userPassWord === "") {
         return;
       } else {
+        state.loading = true;
+
         signInWithEmailAndPassword(
           firebaseAuth,
           state.userEmail,
@@ -36,6 +41,8 @@ export default createStore({
           .then((userCredential) => {
             localStorage.setItem("userid", userCredential.user.uid);
             state.loading = false;
+            localStorage.setItem("Is-logged", false);
+            console.log(state.loggedOut);
             window.location.reload();
           })
           .catch((error) => {
@@ -56,6 +63,8 @@ export default createStore({
         .then(() => {
           localStorage.removeItem('userid')
           window.location.reload();
+          localStorage.setItem("Is-logged", true);
+
         })
         .catch((err) => {
           console.log(err);
@@ -104,6 +113,8 @@ export default createStore({
               "userid",
               userCredential.user.reloadUserInfo.localId
             );
+            localStorage.setItem("Is-logged", false);
+
           })
           .catch((err) => {
             state.loading = false;
@@ -138,8 +149,8 @@ export default createStore({
     },
     async getUserData(state) {
       const user = firebaseAuth.currentUser;
-      console.log(user.uid);
-      const docRef = doc(db, "Users", user.uid);
+      let newID = localStorage.getItem("userid")
+      const docRef = doc(db, "Users", newID);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
@@ -160,7 +171,69 @@ export default createStore({
         console.log("No such document!");
       }
     },
+    donateLogin(state){
+      if (
+        state.userEmail != 
+        state.confirmUserEmail
+      ){
+        state.errorForDonate  = "Email doesn't match. Enter a valid Email"
+        state.errordCheck = true
+      }else if(state.pendingPrice ===""){
+        state.errorForDonate  = " Enter a valid Amount"
+        state.errordCheck = true
+      }else{
+        state.errordCheck = false
+       let password = (generatedPassword(14));
+       state.loading = true;
+
+
+        createUserWithEmailAndPassword(
+          firebaseAuth,
+          state.userEmail,
+          password
+        )
+          .then((userCredential) => {
+            console.log(userCredential.user.reloadUserInfo.localId);
+            state.userID = userCredential.user.reloadUserInfo.localId;
+            localStorage.setItem(
+              "userid",
+              userCredential.user.reloadUserInfo.localId
+            );
+            localStorage.setItem("Is-logged", false);
+
+          })
+          .catch((err) => {
+            state.loading = false;
+            state.error = true;
+            state.errMssg = err.message;
+            setTimeout(() => {
+              state.error = false;
+              state.errMssg = "";
+            }, 10000);
+          })
+          .then(() => {
+            setDoc(doc(db, "Users", state.userID), {
+              Email: state.userEmail,
+              password: password,
+              Username: state.userName,
+              transaction: [{ time: "", price: state.pendingPrice, paid: false }],
+            });
+            state.loading = false;
+          });
+     
+      }
+    }
   },
   actions: {},
   modules: {},
 });
+function generatedPassword(length){
+  // let Password = ""
+  // const validChars = "0123456789" + "abcdefghijklmnopqrstuvwxyz" + "ABCDEFGHIJKLMOPQRSTUVWXYZ" + ",.-{}+!\#$&%()+?"
+  for(let i = 0; i < length; i++){
+    let randomNumber = crypto.getRandomValues(new Uint32Array(1))[0]
+    return randomNumber
+    // randomNumber = Math.floor(randomNumber *validChars.length)
+    // Password += validChars[randomNumber]
+  }         
+}
