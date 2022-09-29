@@ -222,7 +222,23 @@ export default createStore({
           });
      
       }
-    }
+    },
+    changeUserDetails(state){
+      const user = firebaseAuth.currentUser
+      const docRef = doc(db, "Users", user.uid);
+      const data = {
+        Email: state.userEmail,
+        password: state.userPassWord,
+        Username: state.userName,
+        transaction: [{ time: "", price: state.pendingPrice, paid: false }],
+      };
+      setDoc(docRef, data)
+.then(docRef => {
+})
+.catch(error => {
+    console.log(error);
+})
+    },
   },
   actions: {},
   modules: {},
