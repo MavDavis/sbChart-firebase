@@ -57,6 +57,12 @@ export default {
   },
   setup() {},
   created() {
+    if (window.innerWidth < 850) {
+  this.$store.state.mobileScreen = true
+      } else {
+        this.$store.state.mobileScreen = false
+
+      }
     this.checkRoute();
     onAuthStateChanged(firebaseAuth, (user) => {
       if(user){
@@ -64,6 +70,15 @@ export default {
       }
   }
 )
+window.addEventListener("resize", () => {
+      if (window.innerWidth < 850) {
+  this.$store.state.mobileScreen = true
+      } else {
+        this.$store.state.mobileScreen = false
+
+      }
+    })
+
     window.addEventListener(
       "scroll",
       ()=> {

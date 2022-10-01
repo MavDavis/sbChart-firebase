@@ -111,6 +111,11 @@ background: rgba(0, 0, 0, 0.5);
 
    <template>
     <div class="bg-yellow-500    min-h-screen h-full py-5 md:pl-0 pl-5 pr-5">
+      <div @click="$store.state.mobileScreenOpened = !$store.state.mobileScreenOpened" v-if="$store.state.mobileScreen" class="flex justify-end items-center  h-9 w-full p-5">
+        <i class="fas fa-bars text-2xl cursor-pointer" v-if="!$store.state.mobileScreenOpened"></i>
+
+        <i v-else class="fas fa-times cursor-pointer text-2xl"></i>
+      </div>
       <div class="flex min-h-screen h-full relative" >
         <div class="md:w-16 xmd:w-56 fixed z-30  left-0 top-0 bg-yellow-500 h-full flex-none">
           <Sidebar />

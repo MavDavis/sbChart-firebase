@@ -71,8 +71,8 @@
           </div>
     </div>
     <div class="flex w-full relative flex-col items-center justify-center">
-        <div class="mb-4 relative flex w-full md:flex-row flex-col items-center justify-between">
-          <div class="left w-full md:w-1/2">  <label class="font-light text-sm text-dark tracking-wider" for="username">Username</label>
+        <div class="mb-4 relative flex w-full sm:flex-row flex-col items-center justify-between">
+          <div class="left w-full sm:w-1/2">  <label class="font-light text-sm text-dark tracking-wider" for="username">Username</label>
             <input
             
               class="
@@ -91,7 +91,7 @@
               v-model="$store.state.userName"
               type="text"
             /></div>
-            <div class="right w-full md:w-1/2">
+            <div class="right w-full sm:w-1/2">
                 <label class="font-light text-sm text-dark tracking-wider" for="username">Phone number</label>
             <input
             
@@ -115,8 +115,8 @@
             </div>
           </div>
        
-          <div class="mb-4 relative flex w-full md:flex-row flex-col items-center justify-between">
-          <div class="left w-full md:w-1/2">  <label class="font-light text-sm text-dark tracking-wider" for="username">Email</label>
+          <div class="mb-4 relative flex w-full sm:flex-row flex-col items-center justify-between">
+          <div class="left w-full sm:w-1/2">  <label class="font-light text-sm text-dark tracking-wider" for="username">Email</label>
             <input
             
               class="
@@ -135,7 +135,7 @@
               v-model="$store.state.userName"
               type="text"
             /></div>
-            <div class="right w-full md:w-1/2">
+            <div class="right w-full sm:w-1/2">
                 <label class="font-light text-sm text-dark tracking-wider" for="username">Phone number</label>
             <input
             
@@ -158,8 +158,8 @@
             />
             </div>
           </div>
-          <div class="mb-4 relative flex w-full md:flex-row flex-col items-center justify-between">
-          <div class="left  w-full md:w-1/2">  <label class="font-light text-sm text-dark tracking-wider" for="username">Image Upload</label>
+          <div class="mb-4 relative flex w-full sm:flex-row flex-col items-center justify-between">
+          <div class="left  w-full sm:w-1/2">  <label class="font-light text-sm text-dark tracking-wider" for="username">Image Upload</label>
             <input
               class="
                 bg-gray-100
@@ -178,7 +178,7 @@
               type="file"
         
             /></div>
-            <div class="right  w-full md:w-1/2">
+            <div class="right  w-full sm:w-1/2">
                 <label class="font-light text-sm text-dark tracking-wider" for="username">Phone number</label>
             <input
             
