@@ -1,15 +1,17 @@
 <template>
   <div class="app" >
-    <navbar />
-    <div @click="changeStateOptions()">
+    <div v-show="!navigation">
+        <Navbar />
+      </div>    <div @click="changeStateOptions()">
       <router-view />
     </div>
 
-    <Footer />
-  </div>
+    <div v-show="!navigation">
+        <Footer />
+      </div>  </div>
 </template>
 <script>
-  
+
   import { firebaseAuth } from "./firebase"
     import { getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -48,8 +50,14 @@ function amountscrolled() {
 import Navbar from "./components/navbar.vue";
 import Footer from "./components/Footer.vue";
 export default {
+  data(){
+    return{
+      navigation: null,
+    }
+  },
   setup() {},
   created() {
+    this.checkRoute();
     onAuthStateChanged(firebaseAuth, (user) => {
       if(user){
         this.$store.commit('getUserData')
@@ -82,7 +90,25 @@ export default {
       if(this.$store.state.showOptions === true){
         this.$store.commit('changeStateshowOptions')
       }
-    }
+    },
+    checkRoute() {
+      if (
+        this.$route.name === "Login" ||
+        this.$route.name === "ForgotPassword" ||
+        this.$route.name === "User" ||
+        this.$route.name === "Register"
+      ) {
+        this.navigation = true;
+        return;
+      } 
+        this.navigation = false;
+      
+    },
+  },
+  watch: {
+    $route() {
+      this.checkRoute();
+    },
   },
   components: {
     Navbar,

@@ -1,145 +1,6 @@
-<template>
-    <section>
-      <Modal v-if="modal" modalMssg="Changes has been made." @closeModal="closeModal()"/>
-   <div class="bg">
-    <div class="absolute"></div>
-    <header class="header " v-if="!$store.state.scrolled">
-      <div class="sticky">
-          <div class="logo"> <img src="../assets/logo.png" alt=""> </div>
-          
-          <nav class="webimenu"> 
-            <ul class="ownmenu">
-              <li class="active"><router-link to="/">Home </router-link>
-             
-              </li>
-            
-              <li><router-link to="/about">About Us</router-link> </li>
-              <li><router-link to="/gallery">Gallery</router-link> </li>
+
   
-              <li><router-link to="/volunteer"> Volunteer </router-link></li>
-              <li><router-link to="/contact"> Contact</router-link></li>
-            </ul>
-          </nav>
-        </div>
-   
-      </header>
-   </div>
-      <div class="profile  relative flex w-full bg-white  my-5 h-screen sm:h-fit  sm:top-10  items-center justify-center">
-    <div class="px-5 flex flex-col justify-center sm:mb-10 items-center w-full md:w-1/2 sm:w-3/4 ">
-        <h1 class="text-2xl text-dark tracking-wider">
-            Account Setting
-        </h1>
-<div class="bg-gray-200 rounded p-4 mt-4">
-    <div class="flex items-center justify-center flex-col">
-        <div
-            class="
-              bg-dark
-              text-white
-              p-1
-              mb-2
-              rounded-full
-              w-fit
-              h-fit
-              cursor-pointer
-            "
-          >
-         
-          </div>
-          <div
-            class="
-              bg-dark
-              text-white
-              px-2
-              py-1
-              mb-2
-              rounded
-              w-fit
-              h-fit
-              cursor-pointer
-            "
-          >
-            <h1 class="text-white font-semibold text-sm ">
-                <i class="fas fa-user mr-2 text-white text-sm"></i>Admin
-            </h1>
-          </div>
-    </div>
-    <div class="flex w-full flex-col items-center justify-center">
-        <div class="mb-4 relative">
-            <label class="font-light text-sm text-dark tracking-wider" for="firstname">UserName</label>  
-            <input
-              class="
-                bg-gray-100
-                appearance-none
-                border
-                rounded
-                w-full
-                py-2
-                px-2
-                text-dark
-                leading-tight
-                focus:outline-none focus:shadow-outline
-              "
-              v-model="$store.state.userName"
-              type="text"
-              required
-            
-            />
-          </div>
-       
-          <div class="mb-4 relative">
-            <label class="font-light text-sm text-dark tracking-wider" for="username">Password</label>
-            <input
-            disabled
-              class="
-                bg-gray-100
-                appearance-none
-                border
-                rounded
-                relative
-                w-full
-                py-2
-                px-2
-                text-dark
-                leading-tight
-                focus:outline-none focus:shadow-outline
-              "
-              v-model="$store.state.userPassWord"
-              type="text"
-              required
-            />
-          </div>
-          <div class="mb-4 relative">
-            <label class="font-light text-sm text-dark tracking-wider" for="email">Email</label>
-            <input
-            disabled
-              class="
-                bg-gray-100
-                appearance-none
-                border
-                rounded
-                w-full
-                py-2
-                px-2
-                text-dark
-                leading-tight
-                focus:outline-none focus:shadow-outline
-              "
-              v-model="$store.state.userEmail"
-              type="email"
-              required
-            />
-          </div>
-          <button @click="changeUserDetails()" class="mb-4 relative text-black hover:tracking-wider  px-6 py-3 bg-white text-xs">
-            Save Changes
-          </button>
-    </div>
-</div>
-    </div>
-  </div>
-    </section>
-  </template>
-  
-  <script>
+  <!-- <script>
 import Modal from '@/components/Modal.vue';
     export default {
         data() {
@@ -246,5 +107,53 @@ background: rgba(0, 0, 0, 0.5);
       }
       }
     }
-  </style>
+  </style> -->
+
+   <template>
+    <div class="bg-yellow-500    min-h-screen h-full py-5 md:pl-0 pl-5 pr-5">
+      <div class="flex min-h-screen h-full relative" >
+        <div class="md:w-16 xmd:w-56 fixed z-30  left-0 top-0 bg-yellow-500 h-full flex-none">
+          <Sidebar />
+        </div>
+        <div class="body h-full md:left-16 xmd:left-56 bg-gray-200 rounded-3xl relative py-7 px-5">
+<main>
+<UserRoutes/>
+</main>        
+</div>
+      </div>
+      <!-- <div class="w-full flex" style="height: 2vh">
+      </div> -->
+    </div>
+  </template>
   
+  <script>
+  import Sidebar from "@/components/sidebar.vue";
+  import navbar from "@/components/navbar.vue";
+  import Footer from "@/components/Footer.vue";
+  import UserRoutes from "../components/UserRoute.vue";
+  export default {
+    name: "Home",
+    methods:{
+      changeUserView(id){
+        console.log(id);
+      }
+    },
+    components: { Sidebar, Footer, navbar, UserRoutes },
+  };
+  </script>
+  
+  <style lang="scss">
+  * {
+    transition: ease 0.6s;
+  }
+  .body{
+    width:100%;
+    @media(min-width:850px){
+  width:calc(100% - 5rem)
+}
+@media(min-width:1000px){
+  width:calc(100% - 16rem)
+}
+
+  }
+  </style>

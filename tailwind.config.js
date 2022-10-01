@@ -8,6 +8,7 @@ module.exports = {
       'sm': '500px',
 
       'md': '850px',
+      'xmd': '1000px',
 
       'lg': '1440px',
     },
@@ -17,7 +18,7 @@ module.exports = {
       extend: {
      
         colors:{
-      
+          'dark':'#121212',
         }
       },
   

@@ -9,7 +9,8 @@ export default createStore({
   state: {
     scrolled: false,
     loggedOut: localStorage.getItem("Is-logged") === "true",
-
+mobileScreen:false,
+mobileScreenOpened:false,
     showOptions: false,
     showOptions: false,
     UserInitials: "",
@@ -23,7 +24,10 @@ export default createStore({
     userID: "",
     error: false,
     errMssg: "",
-    confirmUserEmail:""
+    confirmUserEmail:"",
+    profile:true,
+    settings:false,
+    completeDonations:false,
   },
   getters: {},
   mutations: {
@@ -166,7 +170,7 @@ export default createStore({
         state.userEmail = docSnap.data().Email;
         state.userName = docSnap.data().Username;
         state.userPassWord = docSnap.data().password;
-        UserInitials.UserInitials = initial;
+        state.UserInitials = initial;
       } else {
         console.log("No such document!");
       }

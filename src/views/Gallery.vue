@@ -15,16 +15,102 @@
   
               <li><router-link to="/volunteer"> Volunteer </router-link></li>
               <li><router-link to="/contact"> Contact</router-link></li>
+              <li class="relative">
+                <i class="fas fa-user text-white text-2xl cursor-pointer" @click="$store.commit('changeStateshowOptions')"></i>
+ 
+          <div
+            v-if="$store.state.showOptions"
+            class="
+              absolute
+              top-10
+              right-1
+              bg-black
+              w-96
+              h-fit
+              flex flex-col
+              items-center
+              shadow
+              justify-center
+            "
+          >
+            <div class="flex items-center border-y p-3 w-full border-white">
+              <div
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  p-1
+                  bg-white
+                  rounded-full
+                "
+              >
+                <h1
+                  class="
+                    text-dark
+                    font-semibold
+                    text-2xl
+                    flex
+                    justify-center
+                    items-center
+                  "
+                >
+                  {{ $store.state.UserInitials }}
+                </h1>
+              </div>
+              <div
+                class="info flex flex-col justify-start items-start ml-5 w-3/4"
+              >
+            
+                <p class="sm text-white flex w-full items-center justify-start">
+                  <i class="mr-2 fas fa-envelope text-sm text-white"></i
+                  >
+                  {{ $store.state.userEmail }}
+                </p>
+                <p class="sm text-white flex w-full items-center justify-start">
+                  <i class="mr-2 fas fa-user text-sm text-white"></i
+                  >
+                  {{ $store.state.userName }}
+                </p>
+              </div>
+            </div>
+            <div class="flex p-3 flex-col justify-center items-start w-full">
+              <div
+              @click="$store.commit('changeStateshowOptions')"
+                class="option text-white mb-2 w-full"
+              >
+                <router-link to="/user">
+                  <i class="fas text-white  fa-user mr-2"></i>view profile
+                </router-link>
+              </div>
+           
+              <div class="option text-white mb-2 w-full">
+                <button v-if="!$store.state.loggedOut" @click="$store.commit('logout')" to="/">
+                  <i class="fas text-white mr-2 fa"></i>SignOUt
+                </button>
+                <button v-if="$store.state.loggedOut" ><router-link to="/login">
+                  <i class="fas text-white mr-2 fa"></i>Login
+                </router-link>
+
+                </button>
+              </div>
+            </div>
+          </div>
+
+            </li>
             </ul>
           </nav>
         </div>
     </header>
+    
+  <div class="card-div">
+    <cardTwo v-for="card in 32" :key="card" :img="card"/></div>
     </section>
   </template>
   
   <script>
+    import cardTwo from '@/components/cardTwo.vue';
   export default {
-  
+  components:{cardTwo}
   }
   </script>
   
@@ -94,6 +180,15 @@
       }
       }
       }
+      .card-div{
+      margin: 0 auto;
+        
+        max-width: 1170px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 2rem;
+    }
     }
   </style>
   
