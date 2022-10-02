@@ -17,9 +17,38 @@
         </li>
       </ul>
     </nav>
-    <aside v-if="$store.state.mobileScreenOpened" class="  absolute top-0 left-0 bg-yellow-500 z-50 h-full">
-
-    </aside>
+      <transition name="mobile-nav"  >
+        <div
+            v-if="$store.state.mobileScreenOpened"
+            class="
+              mobileNav
+              bg-yellow-500 z-50
+              h-full
+              flex flex-col
+         
+              left-0
+              top-0
+              fixed
+              shadow
+            "
+          >
+          <ul class=" mt-5 w-full h-full relative flex flex-col list-none">
+        <li
+        
+          :class="[item.active ? 'bg-gray-200 hover:bg-gray-200 active' : 'notActive hover:bg-yellow-200']"
+          class="pl-5 w-full list-style relative flex items-center"
+          v-for="item in li"
+          :key="item.icon"
+          @click="
+            removeAllActive(item.id);
+          $store.state.mobileScreenOpened = !$store.state.mobileScreenOpened" 
+        >
+          <i :class="item.icon" class="mr-1"></i>
+          <span class="rounded relative text-black">{{ item.name }}</span>
+        </li>
+      </ul>
+        </div>
+      </transition>
   </div>
 </template>
 
@@ -132,24 +161,50 @@ this.$store.state.settings = false
   margin-bottom: 2rem;
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
+  position: relative;
   cursor: pointer;
-  &.active {
-    background: #fff;
+  
+  &::before {
+     
+     content: "";
+ position: absolute;
+ background-color: transparent;
+ bottom: -50px;
+ right: 0;
+ height: 50px;
+ width: 25px;
+ border-top-right-radius: 25px;
+ box-shadow: 0 -25px 0 0 rgb(229 231 235);
+}
+&.notActive::before{
+  display: none;
 
-    &:hover {
-      background: #fff;
-    }
-  }}
+ }
+ 
+}
 li:hover span{
   display: block;
   @media(max-width:1000px){
     width: 200px;
   }
 }
-aside{
-  @media(max-width:850px){
-    width:300px;
-  }
+
+.mobileNav {
+  width: 300px;
+  overflow-x: hidden;
+  transition: all 1s ease;
 
 }
+
+.mobile-nav-enter {
+  transform: translateX(0px);
+}
+.mobile-nav-enter-to {
+  transform: translateX(-30px);
+}
+.mobile-nav-leave-to {
+  transform: translateX(-300px);
+}
+
+
 </style>

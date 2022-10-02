@@ -1,14 +1,14 @@
 <template>
     <section class="h-full w-full relative flex flex-col items-center justify-center md:py-0 py-11">
 <div  class="rounded  h-fit  w-full relative px-5 py-4 bg-white mb-16 flex big-div xmd:flex-row flex-col  items-center">
-    <div class="rounded-full relative h-full  flex justify-center items-start w-fit md:mr-5">
-        <div class=" relative w-40 h-40 bg-gray-200 rounded-full flex justify-center items-center">
-            <i class="fas fa-user relative text-white text-8xl"></i>
+    <div class=" relative h-full  flex sm:flex-row flex-col justify-center items-start w-fit md:mr-5">
+        <div class=" relative sm:w-40 sm:h-40 w-36 h-36 bg-gray-200 rounded-full flex justify-center items-center">
+            <i class="fas fa-user relative text-white sm:text-8xl text-7xl "></i>
             <i class="fas fa absolute fa-camera bg-yellow-500 text-white px-2 py-1 cursor-pointer text-xl rounded-full right-3 bottom-0"></i>
         </div>
 
-        <div class=" relative h-40 flex justify-center ml-4 items-start flex-col">
-<h4>David Marvelous</h4>
+        <div class=" relative sm:h-40 h-20 flex justify-center items-center ml-4 sm:items-start flex-col">
+<h4 class="username md:text-2xl sm:text-xl">David Marvelous</h4>
 <p class=" text-xs font-bold">User</p>
         </div>
     </div>
@@ -21,19 +21,23 @@
     </div>
 
     <div class="  h-full relative">
-<div class="w-56"></div>
+<div class="xmd:w-56 w-full relative ">
+
+</div>
     </div>
 </div>
 <div v-if="$store.state.profile" class="mt-9 card-div flex md:flex-row flex-col  w-full justify-between h-1/2">
-    <div class="card rounded w-full xmd:mb-0 mb-5 md:w-1/2 mr-4">
+    <div class="card rounded overflow-hidden w-full  xmd:mb-0 mb-5 md:w-1/2 mr-4">
+      <apexchart class="max-w-full max-h-full relative" type="line" :options="options" :series="series"></apexchart>
+
     </div>
     <div class="card rounded w-full md:w-1/2 mr-4">
     </div>
 </div>
 <div v-if="$store.state.settings" class="card-div flex w-full justify-between h-1/2">
-    <div class="profile  relative flex w-full bg-white  h-screen sm:h-fit  items-center justify-center">
-    <div class="px-5 flex flex-col justify-center sm:mb-10 items-center w-full md:w-3/4 ">
-        <h1 class="text-2xl text-dark tracking-wider flex justify-center mt-3">
+    <div class="profile  relative flex w-full bg-white  h-fit   items-center justify-center">
+    <div class="px-5 flex flex-col justify-center mb-10 items-center w-full md:w-3/4 ">
+        <h1 class="md:text-2xl sm:text-xl text-sm text-dark tracking-wider flex justify-center mt-3">
             Account Setting
         </h1>
 <div class="bg-gray-200 rounded p-4 mt-4 w-full relative">
@@ -72,7 +76,7 @@
     </div>
     <div class="flex w-full relative flex-col items-center justify-center">
         <div class="mb-4 relative flex w-full sm:flex-row flex-col items-center justify-between">
-          <div class="left w-full sm:w-1/2">  <label class="font-light text-sm text-dark tracking-wider" for="username">Username</label>
+          <div class="left w-full sm:w-1/2">  <label class="font-light sm:text-sm text-xs text-dark tracking-wider" for="username">Username</label>
             <input
             
               class="
@@ -92,7 +96,7 @@
               type="text"
             /></div>
             <div class="right w-full sm:w-1/2">
-                <label class="font-light text-sm text-dark tracking-wider" for="username">Phone number</label>
+                <label class="font-light sm:text-sm text-xs text-dark tracking-wider" for="username">Phone number</label>
             <input
             
               class="
@@ -116,7 +120,7 @@
           </div>
        
           <div class="mb-4 relative flex w-full sm:flex-row flex-col items-center justify-between">
-          <div class="left w-full sm:w-1/2">  <label class="font-light text-sm text-dark tracking-wider" for="username">Email</label>
+          <div class="left w-full sm:w-1/2">  <label class="font-light sm:text-sm text-xs text-dark tracking-wider" for="username">Email</label>
             <input
             
               class="
@@ -136,7 +140,7 @@
               type="text"
             /></div>
             <div class="right w-full sm:w-1/2">
-                <label class="font-light text-sm text-dark tracking-wider" for="username">Phone number</label>
+                <label class="font-light sm:text-sm text-xs text-dark tracking-wider" for="username">Phone number</label>
             <input
             
               class="
@@ -159,7 +163,7 @@
             </div>
           </div>
           <div class="mb-4 relative flex w-full sm:flex-row flex-col items-center justify-between">
-          <div class="left  w-full sm:w-1/2">  <label class="font-light text-sm text-dark tracking-wider" for="username">Image Upload</label>
+          <div class="left  w-full sm:w-1/2">  <label class="font-light sm:text-sm text-xs text-dark tracking-wider" for="username">Image Upload</label>
             <input
               class="
                 bg-gray-100
@@ -179,7 +183,7 @@
         
             /></div>
             <div class="right  w-full sm:w-1/2">
-                <label class="font-light text-sm text-dark tracking-wider" for="username">Phone number</label>
+                <label class="font-light sm:text-sm text-xs text-dark tracking-wider" for="username">Phone number</label>
             <input
             
               class="
@@ -210,9 +214,9 @@
 </div>
 </div>
 <div v-if="$store.state.completeDonations" class="card-div flex w-full justify-between h-1/2">
-    <div class="profile  relative flex w-full bg-white  h-screen sm:h-fit  items-center justify-center pb-6">
+    <div class="profile  relative flex w-full bg-white  h-fit  sm:items-center items-start  justify-center pb-6">
     <div class="px-5 flex flex-col justify-center items-center w-full md:w-3/4 ">
-        <h1 class="text-2xl text-dark tracking-wider flex justify-center mt-3">
+        <h1 class="md:text-2xl sm:text-xl text-sm text-dark tracking-wider flex justify-center mt-3">
             Complete Payments
         </h1>
 <div class="bg-gray-200 rounded p-4 mt-4 w-full relative">
@@ -220,7 +224,7 @@
     </div>
     <div class="flex w-full relative flex-col items-center justify-center">
         <div class="mb-4 relative flex w-full md:flex-row flex-col items-center justify-between">
-          <div class="left w-full md:w-1/2">  <label class="font-light text-sm text-dark tracking-wider" for="username">Username</label>
+          <div class="left w-full md:w-1/2">  <label class="font-light sm:text-sm text-xs text-dark tracking-wider" for="username">Username</label>
             <input
             
               class="
@@ -240,7 +244,7 @@
               type="text"
             /></div>
             <div class="right w-full md:w-1/2">
-                <label class="font-light text-sm text-dark tracking-wider" for="username">Phone number</label>
+                <label class="font-light sm:text-sm text-xs text-dark tracking-wider" for="username">Phone number</label>
             <input
             
               class="
@@ -264,7 +268,7 @@
           </div>
        
           <div class="mb-4 relative flex w-full md:flex-row flex-col items-center justify-between">
-          <div class="left w-full md:w-1/2">  <label class="font-light text-sm text-dark tracking-wider" for="username">Email</label>
+          <div class="left w-full md:w-1/2">  <label class="font-light sm:text-sm text-xs text-dark tracking-wider" for="username">Email</label>
             <input
             
               class="
@@ -284,7 +288,7 @@
               type="text"
             /></div>
             <div class="right w-full md:w-1/2">
-                <label class="font-light text-sm text-dark tracking-wider" for="username">Amount</label>
+                <label class="font-light sm:text-sm text-xs text-dark tracking-wider" for="username">Amount</label>
             <input
             
               class="
@@ -307,7 +311,7 @@
             </div>
           </div>
        
-          <button @click="pay()" class="mb-4 relative uppercase text-white hover:tracking-wider  px-6 py-3 bg-black text-xs">
+          <button @click="pay()" class="mb-4 relative uppercase text-white hover:tracking-wider px-3  sm:px-6 sm:py-3 py-2 bg-black text-xs">
           Make Payments
           </button>
     </div>
@@ -321,12 +325,24 @@
 
 <script>
 import CardThree from './cardThree.vue';
+import VueApexCharts from 'vue-apexcharts'
+
 export default {
-    components: { CardThree },
+    components: { CardThree, VueApexCharts },
     data(){
         return{
-        
-
+          options: {
+        chart: {
+          id: 'vuechart-example'
+        },
+        xaxis: {
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+        }
+      },
+      series: [{
+        name: 'series-1',
+        data: [30, 40, 45, 50, 49, 60, 70, 91]
+      }]
         }
     },
     methods:{
@@ -374,5 +390,13 @@ background: #fff;
       &:last-child{
         margin-right: 0;
       }
+  }
+  @media(max-width:350px){
+    p{
+      font-size: .6rem;
+    }
+    .username{
+      font-size: 1rem;
+    }
   }
 </style>

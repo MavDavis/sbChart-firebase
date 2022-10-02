@@ -7,11 +7,15 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "apexcharts": "^3.35.5",
     "core-js": "^3.8.3",
     "firebase": "^9.10.0",
+    "recharts": "^2.1.14",
     "swiper": "^8.4.2",
     "vue": "^3.2.13",
+    "vue-apexcharts": "^1.6.2",
     "vue-router": "^4.0.3",
+    "vue3-apexcharts": "^1.4.1",
     "vuex": "^4.0.0"
   },
   "devDependencies": {
