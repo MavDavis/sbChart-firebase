@@ -175,6 +175,16 @@ this.$store.state.settings = false
  width: 25px;
  border-top-right-radius: 25px;
  box-shadow: 0 -25px 0 0 rgb(229 231 235);
+ @media(max-width:1000px){
+  width: 10px;
+ border-top-right-radius: 10px;
+ box-shadow: 0 -10px 0 0 rgb(229 231 235);
+ }
+ @media(max-width:850px){
+  width: 25px;
+ border-top-right-radius: 25px;
+ box-shadow: 0 -25px 0 0 rgb(229 231 235);
+}
 }
 &.notActive::before{
   display: none;

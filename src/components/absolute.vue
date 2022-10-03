@@ -58,10 +58,14 @@ padding: 0 10%;
   justify-content: space-around;
   .btn{
     border: 1px solid #000;
-    width: 50%;
-display: flex;
+    position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
 align-items: center;
-justify-content: center;
+justify-content: center; 
 color: var(--dark);
 a{
   color: var(--dark);

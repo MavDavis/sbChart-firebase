@@ -399,4 +399,19 @@ background: #fff;
       font-size: 1rem;
     }
   }
+  .vue-apexcharts{
+    position:relative;
+    min-height:100% !important;
+    height:100% !important;
+  }
+  .apexcharts-canvas{
+    width:100% !important;
+    height:100% !important;
+    position: relative;
+  }
+  .apexcharts-svg{
+    max-width: 100% !important;
+    position: relative;
+    max-height: 100% !important;
+  }
 </style>
