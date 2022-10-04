@@ -32,6 +32,7 @@
 
     </div>
     <div class="card rounded w-full md:w-1/2 mr-4">
+      <Sbchart/>
     </div>
 </div>
 <div v-if="$store.state.settings" class="card-div flex w-full justify-between h-1/2">
@@ -326,9 +327,10 @@
 <script>
 import CardThree from './cardThree.vue';
 import VueApexCharts from 'vue-apexcharts'
+import Sbchart from './Sbchart.vue';
 
 export default {
-    components: { CardThree, VueApexCharts },
+    components: { CardThree, VueApexCharts, Sbchart },
     data(){
         return{
           options: {

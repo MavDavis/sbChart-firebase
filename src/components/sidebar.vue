@@ -75,14 +75,14 @@ this.$store.state.settings = false
           active: false,
         },
         {
-          name: "Profile",
+          name: "Dashboard",
           icon: "fas fa-user",
           methods: "profile",
           id:5,
           active: false,
         },
         {
-          name: "Complete Donations",
+          name: " Give",
           icon: "fa-solid fa-money-check-dollar",
           methods: "showPayment",
           id:2,
@@ -96,15 +96,9 @@ this.$store.state.settings = false
           id:6,
           active: false,
         },
+    
         {
-          name: "Gallery",
-          icon: "fa-regular fas fa-photo-film",
-          methods: "Gallery",
-          id:3,
-          active: false,
-        },
-        {
-          name: "Contact",
+          name: "Feedback",
           icon: "fas fa-phone",
           methods: "contactUs",
           id:4,

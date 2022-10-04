@@ -15,6 +15,7 @@
     "vue": "^3.2.13",
     "vue-apexcharts": "^1.6.2",
     "vue-router": "^4.0.3",
+    "vue-sbchart": "^0.1.20",
     "vue3-apexcharts": "^1.4.1",
     "vuex": "^4.0.0"
   },

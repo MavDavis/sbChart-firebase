@@ -1,12 +1,12 @@
 <template>
   <div class="card">
-    <img :src="img" alt="">
+    <img :src="required(img)" alt="">
   </div>
 </template>
 
 <script>
 export default {
-props:['img']
+props:['img', "id"]
 }
 </script>
 

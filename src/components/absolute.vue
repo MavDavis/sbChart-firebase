@@ -61,12 +61,15 @@ padding: 0 10%;
     position: relative;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 60px;
   display: flex;
 align-items: center;
 justify-content: center; 
 color: var(--dark);
+@media(max-width:500PX){
+width:100%;
+}
 a{
   color: var(--dark);
   display: flex;
