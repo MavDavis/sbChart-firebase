@@ -6,7 +6,7 @@ import User from '../views/User.vue'
 import Volunteer from '../views/Volunteer.vue'
 import AboutView from '../views/AboutView.vue'
 import Login from '../views/Login.vue'
-
+import galleryDetails from '../components/galleryDetails'
 import ForgotPassword from '../views/forgotPassword.vue'
 import Register from '../views/SignUp.vue'
 const routes = [
@@ -42,7 +42,13 @@ const routes = [
     path: '/gallery',
     name: 'Gallery',
     component: Gallery
-  },  {
+  },
+  {
+    path: "/galleryDetails/:id",
+    component: galleryDetails,
+    name: "galleryDetails",
+},
+  {
     path: '/volunteer',
     name: 'Volunteer',
     component: Volunteer

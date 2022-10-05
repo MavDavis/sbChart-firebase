@@ -2,16 +2,16 @@
   <section id="homeDonate mt-5">
     <Loading v-if="$store.state.loading"/>
     <div class="flex flex-col w-screen h-full my-5 justify-center items-center">
-      <h2 class="md:text-4xl text-2xl text-bold mt-8 mb-5">Make A Commitment</h2>
+      <h2 class="md:text-4xl text-2xl text-bold mt-8 mb-5 text-center">Make A Commitment</h2>
 <p v-if="errMsg" class="bold text-red-500 my-5 flex justify-center align-center text-lg">
   {{err}}
 </p>
 
 
       <div class="w-full flex justify-center flex-col items-center h-fit relative ">
-        <div class="pl-10 mb-2 w-full  ">Price Range:</div>
+        <div class="text-center mb-2 w-full  ">Price Range:</div>
 
-       <div class="w-full flex justify-center  items-center h-fit relative mb-5 px-5  ">
+       <div class="md:w-3/4 w-full flex justify-center  items-center h-fit relative mb-5 px-5  ">
         <div
           v-for="range in PriceRangeArray"
           :key="range.string"
@@ -22,7 +22,6 @@
             p-2
             w-1/4
             border-black
-
             min-h-fit
             justify-center
             items-center
@@ -36,33 +35,36 @@
         </div>
        </div>
       </div>
-      <div class="w-full flex justify-center flex-col items-center h-fit relative">
-        <div class="pl-10 mb-2 w-full">{{ wordsRange }}</div>
+      <div class="md:w-3/4 w-full flex justify-center flex-col items-center h-fit relative">
+        <div class=" text-center mb-2 w-full">{{ wordsRange }}</div>
 
-       <div class="w-full flex justify-center  items-center h-fit relative mb-5 px-5">
-        <div
+       <div class="sm:w-3/4 w-full button-div  flex justify-between  items-center h-fit relative mb-5 px-5">
+       <button
           v-for="range in priceDetailRangeArray"
           :key="range.string"
           @click="rangeActiveTwo(range.id)"
-          :class="[range.active? 'bg-black text-white': 'bg-white text-black hover:bg-black hover:text-white']"
           class="
-            border
             p-2
-            select-btn
-            border-black
-            w-1/4
+            sm:mr-2
+            mr-0
+            md:w-36
+            sm:w-32
+            shadow
             justify-center
             min-h-fit
             items-center
             flex
+            bg-gray-700
+            rounded
+            text-white
             cursor-pointer
-           
-            border-r-0
+          
           "
         >
-          {{ range.string }}
-        </div>
-       </div>
+          {{ range.string.toLocaleString() }}
+       </button>
+       
+      </div>
       </div>
       <p v-if="$store.state.error" class="bold text-red-500 my-5 flex justify-center align-center text-lg">
   {{$store.state.errMssg}}
@@ -256,6 +258,7 @@ export default {
             arrayTofalse(this.priceDetailRangeArray);
             let item = this.priceDetailRangeArray.find(item => item.id == id);
             item.active = true;
+            this.$store.state.pendingPrice = item.string
         },
         rangeActive(id) {
             this.errMsg = false;
@@ -301,28 +304,28 @@ export default {
                 { string: "> 1M", active: false, id: 4 },
             ],
             PriceHundredRangeArray: [
-                { string: "1k-25k", active: true, id: 1 },
-                { string: "25k-50k", active: false, id: 2 },
-                { string: "50k-75k", active: false, id: 3 },
-                { string: "75-100k", active: false, id: 4 },
+                { string: 1000, active: true, id: 1 },
+                { string: 25000, active: false, id: 2 },
+                { string: 50000, active: false, id: 3 },
+                { string: 75000, active: false, id: 4 },
             ],
             PricefiveHundredRangeArray: [
-                { string: "100k-200k", active: true, id: 1 },
-                { string: "200k-300k", active: false, id: 2 },
-                { string: "300k-400k", active: false, id: 3 },
-                { string: "400-500k", active: false, id: 4 },
+                { string: 100000, active: true, id: 1 },
+                { string: 200000, active: false, id: 2 },
+                { string: 300000, active: false, id: 3 },
+                { string: 400000, active: false, id: 4 },
             ],
             PricesixHundredRangeArray: [
-                { string: "600k-700k", active: false, id: 1 },
-                { string: "700k-800k", active: false, id: 2 },
-                { string: "800k-900k", active: false, id: 3 },
-                { string: "900-1M", active: false, id: 4 },
+                { string: 600000, active: false, id: 1 },
+                { string: 700000, active: false, id: 2 },
+                { string: 800000, active: false, id: 3 },
+                { string: 900000, active: false, id: 4 },
             ],
             priceOneMil: [
-                { string: "1M-2M", active: false, id: 1 },
-                { string: "2M-3M", active: false, id: 2 },
-                { string: "3M-4M", active: false, id: 3 },
-                { string: "4M+", active: false, id: 4 },
+                { string: 1000000, active: false, id: 1 },
+                { string: 2000000, active: false, id: 2 },
+                { string: 3000000, active: false, id: 3 },
+                { string: 4000000, active: false, id: 4 },
             ]
         };
     },
@@ -352,10 +355,26 @@ section {
 }
 @media(max-width:700px){
 .select-btn{
-  height: 100px;
+  height: 50px;
+}
+}
+@media(max-width:450px){
+.select-btn{
+  height: 70px;
+}
 }
 .select-btn:last-child{
   border-right: 1px solid black;
 }
+@media(max-width:450px){
+  .button-div{
+      margin: 0 auto 10px;
+        
+        max-width: 1170px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 2rem;
+    }
 }
 </style>

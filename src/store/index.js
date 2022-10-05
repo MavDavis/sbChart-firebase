@@ -8,6 +8,27 @@ import { firebaseAuth } from "../firebase";
 export default createStore({
   state: {
     scrolled: false,
+    gallery:[
+      {
+        img:require('../assets/slide1.jpg'),
+        id:1
+      },  {
+        img:require('../assets/slide2.jpg'),
+        id:2
+      },  {
+        img:require('../assets/gallery.jpg'),
+        id:3
+      },  {
+        img:require('../assets/form.jpg'),
+        id:4
+      },  {
+        img:require('../assets/donate.jpg'),
+        id:5
+      },  {
+        img:require('../assets/about.jpg'),
+        id:6
+      },
+    ],
     loggedOut: localStorage.getItem("Is-logged") === "true",
 mobileScreen:false,
 mobileScreenOpened:false,

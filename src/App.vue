@@ -85,7 +85,7 @@ window.addEventListener("resize", () => {
         clearTimeout(throttlescroll);
         throttlescroll = setTimeout( () => {
           if (window.innerWidth > 850){
-            if (amountscrolled() > 4)  {
+            if (amountscrolled() >= 4)  {
             this.$store.commit("changedScrolledTotrue");
           }else{
             this.$store.commit("changedScrolledTofalse");

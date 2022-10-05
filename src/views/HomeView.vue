@@ -4,9 +4,13 @@
   <Grid/>
   <section class="cardTwo">
     <h1>BITS OF OUR GALLERY VIEW</h1>
-    <hr>
-  <div class="card-div">
-    <CardTwo v-for="card in cardInTwo" :key="card" :img="card"/></div>
+    <hr> <div class="card-div">
+    <div  class="card relative" v-for="card in Imgs" :key="card.id" >
+<router-link class="relative w-full h-full" :to="'/galleryDetails/' + card.id">
+  <img class="relative w-full h-full" :src="card.img" alt=""/>
+</router-link>
+  </div>
+  </div>
   </section>
   <div v-if="$store.state.loggedOut">
     <HomeDonate />
@@ -25,6 +29,11 @@ export default {
     data(){
       return{
         cardInTwo:["", "", "","", "", "","", ""],
+      }
+    },
+    computed:{
+      Imgs(){
+        return this.$store.state.gallery.slice(0,4)
       }
     }
 }
@@ -50,4 +59,14 @@ hr{
         grid-row-gap: 2rem;
     }
   }
+  .card{
+    border:
+    1px #eeeeee solid;
+    height: 400px;
+ transition: all .2s ease-in;
+    &:hover{
+      cursor: pointer;
+        transform: rotate(7deg);
+    }
+}
 </style>

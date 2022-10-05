@@ -1,123 +1,66 @@
 <template>
     <section>
-      <header class="header" v-if="!$store.state.scrolled">
-      <div class="sticky">
-          <div class="logo"> <img src="../assets/logo2.png" alt=""> </div>
-          
-          <nav class="webimenu"> 
-            <ul class="ownmenu">
-              <li class="active"><router-link to="/">Home </router-link>
-             
-              </li>
-            
-              <li><router-link to="/about">About Us</router-link> </li>
-              <li><router-link to="/gallery">Gallery</router-link> </li>
   
-              <li><router-link to="/volunteer"> Volunteer </router-link></li>
-              <li><router-link to="/contact"> Contact</router-link></li>
-              <li class="relative">
-                <i class="fas fa-user text-white text-2xl cursor-pointer" @click="$store.commit('changeStateshowOptions')"></i>
- 
-          <div
-            v-if="$store.state.showOptions"
-            class="
-              absolute
-              top-10
-              right-1
-              bg-black
-              w-96
-              h-fit
-              flex flex-col
-              items-center
-              shadow
-              justify-center
-            "
-          >
-            <div class="flex items-center border-y p-3 w-full border-white">
-              <div
-                class="
-                  flex
-                  items-center
-                  justify-center
-                  p-1
-                  bg-white
-                  rounded-full
-                "
-              >
-                <h1
-                  class="
-                    text-dark
-                    font-semibold
-                    text-2xl
-                    flex
-                    justify-center
-                    items-center
-                  "
-                >
-                  {{ $store.state.UserInitials }}
-                </h1>
-              </div>
-              <div
-                class="info flex flex-col justify-start items-start ml-5 w-3/4"
-              >
-            
-                <p class="sm text-white flex w-full items-center justify-start">
-                  <i class="mr-2 fas fa-envelope text-sm text-white"></i
-                  >
-                  {{ $store.state.userEmail }}
-                </p>
-                <p class="sm text-white flex w-full items-center justify-start">
-                  <i class="mr-2 fas fa-user text-sm text-white"></i
-                  >
-                  {{ $store.state.userName }}
-                </p>
-              </div>
-            </div>
-            <div class="flex p-3 flex-col justify-center items-start w-full">
-              <div
-              @click="$store.commit('changeStateshowOptions')"
-                class="option text-white mb-2 w-full"
-              >
-                <router-link to="/user">
-                  <i class="fas text-white  fa-user mr-2"></i>view profile
-                </router-link>
-              </div>
+      <!-- <header class="header" v-if="!$store.state.scrolled">
+    <div class="sticky">
+        <div class="logo"> <img src="../assets/logo2.png" alt=""> </div>
+        
+        <nav class="webimenu"> 
+          <ul class="ownmenu">
+            <li class="active"><router-link to="/">Home </router-link>
            
-              <div class="option text-white mb-2 w-full">
-                <button v-if="!$store.state.loggedOut" @click="$store.commit('logout')" to="/">
-                  <i class="fas text-white mr-2 fa"></i>SignOUt
-                </button>
-                <button v-if="$store.state.loggedOut" ><router-link to="/login">
-                  <i class="fas text-white mr-2 fa"></i>Login
-                </router-link>
-
-                </button>
-              </div>
-            </div>
-          </div>
-
             </li>
-            </ul>
-          </nav>
-        </div>
-    </header>
-    
-  <div class="card-div">
-    <cardTwo v-for="card in 32" :key="card" :img="card"/></div>
-    </section>
+          
+            <li><router-link to="/about">About Us</router-link> </li>
+			<li><router-link to="/gallery">Gallery</router-link> </li>
+
+            <li><router-link to="/volunteer"> Volunteer </router-link></li>
+            <li><router-link to="/contact"> Contact</router-link></li>
+          
+          </ul>
+        </nav>
+      </div>
+  </header>  -->
+  <div class="card-div py-10">
+    <div  class="card relative" v-for="card in $store.state.gallery" :key="card.id" >
+  <router-link class="relative w-full h-full" :to="'/galleryDetails/' + card.id">
+  <img class="relative w-full h-full" :src="card.img" alt=""/>
+  </router-link>
+  </div>
+  </div>
+</section>
+
   </template>
-  
   <script>
     import cardTwo from '@/components/cardTwo.vue';
   export default {
-  components:{cardTwo}
+  components:{cardTwo},
+ data(){
+  return{
+ id:this.$route.params.id,
+  }
+ },
+ methods:{
+
+ }
   }
   </script>
   
   <style lang="scss" scoped>
+    .card{
+    border:
+    1px #eeeeee solid;
+    height: 400px;
+ transition: all .2s ease-in;
+    &:hover{
+      cursor: pointer;
+        transform: rotate(7deg);
+    }
+}
     section{
       min-height:100vh;
   background: rgba(0, 0, 0,0.9);
+}
        header {
           position:relative;
           width: 100%;
@@ -189,6 +132,6 @@
         grid-column-gap: 1.5rem;
         grid-row-gap: 2rem;
     }
-    }
+  
   </style>
   
