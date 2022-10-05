@@ -1,5 +1,5 @@
 <template>
-  <section id="homeDonate mt-5">
+  <section  class="mt-5">
     <Loading v-if="$store.state.loading"/>
     <div class="flex flex-col w-screen h-full my-5 justify-center items-center">
       <h2 class="md:text-4xl text-2xl text-bold mt-8 mb-5 text-center">Make A Commitment</h2>
@@ -36,7 +36,6 @@
        </div>
       </div>
       <div class="md:w-3/4 w-full flex justify-center flex-col items-center h-fit relative">
-        <div class=" text-center mb-2 w-full">{{ wordsRange }}</div>
 
        <div class="sm:w-3/4 w-full button-div  flex justify-between  items-center h-fit relative mb-5 px-5">
        <button

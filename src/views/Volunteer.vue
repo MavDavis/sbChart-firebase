@@ -29,7 +29,7 @@
 export default {
   created(){
 if(localStorage.getItem('userid') == undefined){
-  this.$router.push('/login')
+  this.$router.push('/')
 }
       },
 };

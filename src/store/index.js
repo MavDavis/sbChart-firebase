@@ -49,6 +49,8 @@ mobileScreenOpened:false,
     profile:true,
     settings:false,
     completeDonations:false,
+    makeDonations:false,
+    contactus:false
   },
   getters: {},
   mutations: {

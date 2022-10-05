@@ -4,7 +4,7 @@
       <ul class="pl-5 mt-5 w-full h-full relative flex flex-col list-none">
         <li
         
-          :class="[item.active ? 'bg-gray-200 hover:bg-white' : 'notActive hover:bg-yellow-200']"
+          :class="[item.active ? 'bg-gray-200 hover:bg-gray-200' : 'notActive hover:bg-yellow-200']"
           class="list-style relative flex items-center"
           v-for="item in li"
           :key="item.icon"
@@ -35,7 +35,7 @@
           <ul class=" mt-5 w-full h-full relative flex flex-col list-none">
         <li
         
-          :class="[item.active ? 'bg-gray-200 hover:bg-gray-200 active' : 'notActive hover:bg-yellow-200']"
+          :class="[item.active ? 'bg-gray-300 hover:bg-gray-300 active' : 'notActive hover:bg-yellow-200']"
           class="pl-5 w-full list-style relative flex items-center"
           v-for="item in li"
           :key="item.icon"
@@ -61,6 +61,8 @@ export default {
   created(){
 idSearch(this.li,2)
 this.$store.state.settings = false
+this.$store.state.contactUs = false
+
       this.$store.state.completeDonations = true
       this.$store.state.profile = false  },
   data() {
@@ -122,24 +124,33 @@ this.$store.state.settings = false
       this.$store.state.profile = false
       this.$store.state.settings = false
       this.$store.state.completeDonations = true
+      this.$store.state.contactUs = false
+
       idSearch(this.li, 2)
     }  else  if(id == 3){
       idSearch(this.li, 3)
       this.$router.push('/gallery')
     }  else  if(id == 4){
       idSearch(this.li, 4)
-      this.$router.push('/contact')
-
+      this.$store.state.profile = false
+      this.$store.state.settings = false
+      this.$store.state.completeDonations = false,
+      this.$store.state.contactUs = true
+      
     }  else  if(id == 5){
+      //write a code to check if user is registered and if he is, show give not not complete give
       this.$store.state.settings = false
       this.$store.state.completeDonations = false
       this.$store.state.profile = true
+            this.$store.state.contactUs = false
 
       idSearch(this.li, 5)
     }  else  if(id == 6){
       this.$store.state.settings = true
       this.$store.state.completeDonations = false
       this.$store.state.profile = false
+            this.$store.state.contactUs = false
+
       idSearch(this.li, 6)
     }
     },
@@ -157,7 +168,7 @@ this.$store.state.settings = false
   border-top-left-radius: 20px;
   position: relative;
   cursor: pointer;
-  
+
   &::before {
      
      content: "";

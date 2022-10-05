@@ -26,14 +26,17 @@
 </div>
     </div>
 </div>
-<div v-if="$store.state.profile" class="mt-9 card-div flex md:flex-row flex-col  w-full justify-between h-1/2">
-    <div class="card rounded overflow-hidden w-full  xmd:mb-0 mb-5 md:w-1/2 mr-4">
-      <apexchart class="max-w-full max-h-full relative" type="line" :options="options" :series="series"></apexchart>
-
+<div class="flex flex-col h-fit w-full relative" v-if="$store.state.profile">
+  <div class="md:text-3xl sm:text-xl text-lg w-full justify-start flex items-center">Activities:</div> 
+<div class="mt-9 card-div flex md:flex-row flex-col  w-full justify-between min-h-fit">
+  <div class="card rounded h-36 overflow-hidden w-full  xmd:mb-0 mb-5 md:w-1/2 mr-4">
+      <!-- <apexchart class="max-w-full max-h-full relative" type="line" :options="options" :series="series"></apexchart> -->
+Nom of Payment:
     </div>
     <div class="card rounded w-full md:w-1/2 mr-4">
       <Sbchart/>
     </div>
+  </div>
 </div>
 <div v-if="$store.state.settings" class="card-div flex w-full justify-between h-1/2">
     <div class="profile  relative flex w-full bg-white  h-fit   items-center justify-center">
@@ -219,6 +222,155 @@
     <div class="px-5 flex flex-col justify-center items-center w-full md:w-3/4 ">
         <h1 class="md:text-2xl sm:text-xl text-sm text-dark tracking-wider flex justify-center mt-3">
             Complete Payments
+        </h1>
+<div class="bg-gray-200 rounded p-4 mt-4 w-full relative">
+    <div class="flex items-center justify-center flex-col">    
+    </div>
+    <div class="flex w-full relative flex-col items-center justify-center">
+        <div class="mb-4 relative flex w-full md:flex-row flex-col items-center justify-between">
+          <div class="left w-full md:w-1/2">  <label class="font-light sm:text-sm text-xs text-dark tracking-wider" for="username">Username</label>
+            <input
+            
+              class="
+                bg-gray-100
+                appearance-none
+                border
+                rounded
+                relative
+                w-full
+                py-2
+                px-2
+                text-dark
+                leading-tight
+                focus:outline-none focus:shadow-outline
+              "
+              v-model="$store.state.userName"
+              type="text"
+            /></div>
+            <div class="right w-full md:w-1/2">
+                <label class="font-light sm:text-sm text-xs text-dark tracking-wider" for="username">Phone number</label>
+            <input
+            
+              class="
+                bg-gray-100
+                appearance-none
+                border
+                rounded
+                relative
+                w-full
+                py-2
+                px-2
+                text-dark
+                leading-tight
+                focus:outline-none focus:shadow-outline
+              "
+              v-model="number"
+              type="number"
+              
+            />
+            </div>
+          </div>
+       
+          <div class="mb-4 relative flex w-full md:flex-row flex-col items-center justify-between">
+          <div class="left w-full md:w-1/2">  <label class="font-light sm:text-sm text-xs text-dark tracking-wider" for="username">Email</label>
+            <input
+            
+              class="
+                bg-gray-100
+                appearance-none
+                border
+                rounded
+                relative
+                w-full
+                py-2
+                px-2
+                text-dark
+                leading-tight
+                focus:outline-none focus:shadow-outline
+              "
+              v-model="$store.state.userName"
+              type="text"
+            /></div>
+            <div class="right w-full md:w-1/2">
+                <label class="font-light sm:text-sm text-xs text-dark tracking-wider" for="username">Amount</label>
+            <input
+            
+              class="
+                bg-gray-100
+                appearance-none
+                border
+                rounded
+                relative
+                w-full
+                py-2
+                px-2
+                text-dark
+                leading-tight
+                focus:outline-none focus:shadow-outline
+              "
+              v-model="number"
+              type="number"
+              
+            />
+            </div>
+          </div>
+       
+          <button @click="pay()" class="mb-4 relative uppercase text-white hover:tracking-wider px-3  sm:px-6 sm:py-3 py-2 bg-black text-xs">
+          Make Payments
+          </button>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<div v-if="$store.state.contactUs"  class="flex items-center w-full min-h-screen bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto">
+            <div class="md:w-3/4 w-full  mx-auto my-10 bg-white p-5 rounded-md shadow-sm">
+                <div class="text-center">
+                    <h1 class="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">Reviews</h1>
+                    <p class="text-gray-400 dark:text-gray-400">Fill up the form below to send us a feedback.</p>
+                </div>
+                <div class="m-7">
+                    <form >
+                      
+            
+                        <div class="mb-6">
+                            <label for="name" class="block mb-1 text-sm text-gray-600 dark:text-gray-400">Full Name</label>
+                            <input type="text" name="name" id="name" placeholder="John Doe" required class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"/>
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block mb-1 text-sm text-gray-600 dark:text-gray-400">Email Address</label>
+                            <input type="email" name="email" id="email" placeholder="you@email.com" required class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"/>
+                        </div>
+                        <div class="mb-6">
+                            <label for="subject" class="block mb-1 text-sm text-gray-600 dark:text-gray-400">Subject</label>
+                            <input type="text" name="subject" id="subject" placeholder="Your Subject" required class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"/>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block mb-1 text-sm text-gray-600 dark:text-gray-400">Your Message</label>
+                            <textarea rows="5" name="message" id="message" placeholder="Your Message" class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" required></textarea>
+                        </div>
+                        <div class="mb-6">
+                            <button type="submit" class="w-full px-3 py-4 text-white rounded-md focus:outline-none">Send Message</button>
+                        </div>
+                        <p class="text-base text-center text-gray-400" id="result"></p>
+                    </form>
+                </div>
+              </div>
+              <div class="m-7 flex justify-center items-center flex-col">
+
+                <div class="mt-5 flex">
+                  <i class="fa-brands md:text-2xl text-lg hover:translate-y-2 fa-facebook mr-5"></i>    
+                  <i class="fa-brands md:text-2xl text-lg hover:translate-y-2 fa-instagram mr-5"></i>
+                  <i class="fa-brands md:text-2xl text-lg hover:translate-y-2 fa-twitter"></i>            </div>
+              </div>
+        </div>
+    </div>
+<div v-if="$store.state.makeDonations" class="card-div flex w-full justify-between h-1/2">
+    <div class="profile  relative flex w-full bg-white  h-fit  sm:items-center items-start  justify-center pb-6">
+    <div class="px-5 flex flex-col justify-center items-center w-full md:w-3/4 ">
+        <h1 class="md:text-2xl sm:text-xl text-sm text-dark tracking-wider flex justify-center mt-3">
+            Give
         </h1>
 <div class="bg-gray-200 rounded p-4 mt-4 w-full relative">
     <div class="flex items-center justify-center flex-col">    

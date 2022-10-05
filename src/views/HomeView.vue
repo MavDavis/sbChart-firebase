@@ -13,8 +13,9 @@
   </div>
   </section>
   <div v-if="$store.state.loggedOut">
-    <HomeDonate />
-
+    <div ref="homeDonate">
+      <HomeDonate />
+    </div>
   </div>
 </template>
 
@@ -24,13 +25,24 @@ import Grid from '@/components/grid.vue';
 import Swipers from '@/components/swipers.vue';
 import CardTwo from '@/components/cardTwo.vue';
 import HomeDonate from '@/components/Home-Donate.vue';
+
 export default {
     components: { Absolute, Grid, Swipers, CardTwo, HomeDonate },
+    mounted(){
+      this.lastPath = this.$router.options.history.state.back
+if(this.lastPath == "/volunteer"){
+this.item = this.$refs.homeDonate
+this.item.scrollIntoView();
+}   
+ },
     data(){
       return{
         cardInTwo:["", "", "","", "", "","", ""],
+        lastPath: null ,  
+        item:null   
       }
     },
+
     computed:{
       Imgs(){
         return this.$store.state.gallery.slice(0,4)
