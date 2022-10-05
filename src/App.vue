@@ -57,6 +57,7 @@ export default {
   },
   setup() {},
   created() {
+  
     if (window.innerWidth < 850) {
   this.$store.state.mobileScreen = true
       } else {

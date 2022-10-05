@@ -9,6 +9,7 @@ import Login from '../views/Login.vue'
 import galleryDetails from '../components/galleryDetails'
 import ForgotPassword from '../views/forgotPassword.vue'
 import Register from '../views/SignUp.vue'
+import store from '@/store/index'
 const routes = [
   {
     path: '/',
@@ -51,7 +52,14 @@ const routes = [
   {
     path: '/volunteer',
     name: 'Volunteer',
-    component: Volunteer
+    component: Volunteer,
+    beforeEnter:(to, from, next)=>{
+      if(store.state.loggedOut === true){
+        next('/#home-donate')
+      }else{
+        next()
+      }
+    }
   },  {
     path: '/user',
     name: 'User',
