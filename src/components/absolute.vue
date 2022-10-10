@@ -1,5 +1,7 @@
 <template>
-  <section>
+  <section  data-aos="zoom-out"
+        data-aos-duration="2000"
+        data-aos-ease="ease">
     <div class="flex">
       <div class="text">
         <h4 class="font-bold">Who we are</h4>

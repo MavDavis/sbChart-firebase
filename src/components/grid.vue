@@ -1,10 +1,14 @@
 <template>
   <section>
     <div class="flex flex1">
-    <div class="col-5 item1 item">
+    <div class="col-5 item1 item" data-aos="slide-right"
+        data-aos-duration="1500"
+        data-aos-ease="ease">
       <Card />
     </div>
-    <div class="col-4 item2 item"><Card heading="" p="" Details="" img=""/></div>
+    <div class="col-4 item2 item" data-aos="slide-left"
+        data-aos-duration="1500"
+        data-aos-ease="ease"><Card heading="" p="" Details="" img=""/></div>
   </div>
  
   </section>

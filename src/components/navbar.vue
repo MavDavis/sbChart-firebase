@@ -176,10 +176,10 @@ export default {
 
 <style scoped lang="scss">
 .navbar {
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.85);
   position: relative;
   width: 100%;
-  height: fit-content;
+  height: 20vh;
 
   header {
     background-color: rgba(0, 0, 0, 0.85);
@@ -298,7 +298,7 @@ export default {
     right: 0px;
 
     ul {
-      background-color: rgba(0, 0, 0, 0.75);
+      background-color: rgba(0, 0, 0, 0.85);
 top: 2rem;
 @media(max-width:600px){
 top:1.5rem;
@@ -335,6 +335,9 @@ top:1.5rem;
         }
       }
     }
+  }
+  @media(max-width:850px){
+    height:fit-content
   }
 }
 </style>

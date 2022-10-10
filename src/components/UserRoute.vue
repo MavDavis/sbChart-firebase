@@ -29,13 +29,47 @@
 <div class="flex flex-col h-fit w-full relative" v-if="$store.state.profile">
   <div class="md:text-3xl sm:text-xl text-lg w-full justify-start flex items-center">Activities:</div> 
 <div class="mt-9 card-div flex md:flex-row flex-col  w-full justify-between min-h-fit">
-  <div class="card rounded h-36 overflow-hidden w-full  xmd:mb-0 mb-5 md:w-1/2 mr-4">
+  <div class="card p-5 rounded h-36 overflow-hidden w-full  xmd:mb-0 mb-5 md:w-1/2 mr-4">
       <!-- <apexchart class="max-w-full max-h-full relative" type="line" :options="options" :series="series"></apexchart> -->
-Nom of Payment:
+<p class="text-lg font-bold tracking-wide">
+  Transactions:
+
+</p><div class="flex flex-col  my-3 relative w-full ">
+  <table>
+  <tr class="flex justify-items-start w-full relative justify-between leading-8">
+    <th class="font-bold text-sm tracking-wide">Date</th>
+    <th class="font-bold text-sm tracking-wide">Amount</th>
+  </tr>
+  <tr class="flex justify-items-start w-full relative justify-between leading-8">
+    <td>01 March 2022</td>
+    <td>&#8358;0.00</td>
+  </tr>
+  <tr class="flex justify-items-start w-full relative justify-between leading-8">
+    <td>01 July 2022</td>
+    <td>&#8358;6000.00</td>
+  </tr>
+</table>
+</div>
+<div class="flex relative mt-auto items-end w-36">
+  <button class="flex w-36 justify-center  bg-black py-2 px-3  hover:tracking-wider hover:bg-white hover:text-black btn-border text-white">Donate</button>
+</div>
     </div>
     <div class="card rounded w-full md:w-1/2 mr-4">
       <Sbchart/>
     </div>
+  </div>
+  <div class="mt-9 card-div flex md:flex-row flex-col-reverse  w-full justify-between min-h-fit">
+
+    <div class="card rounded w-full md:w-1/2 mr-4 ">
+      <Sbchart/>
+    </div>
+  <div class="card rounded h-36 overflow-hidden w-full xmd:mb-0 mb-5  md:w-1/2 mr-4 p-4">
+      <!-- <apexchart class="max-w-full max-h-full relative" type="line" :options="options" :series="series"></apexchart> -->
+      <p class="text-lg font-bold tracking-wide">
+  Login Activities:
+
+</p>    </div>
+ 
   </div>
 </div>
 <div v-if="$store.state.settings" class="card-div flex w-full justify-between h-1/2">
@@ -568,4 +602,10 @@ background: #fff;
     position: relative;
     max-height: 100% !important;
   }
+  .btn-border
+  {
+    margin-top: auto;
+    &:hover{
+border:1px solid #000;
+  }}
 </style>
