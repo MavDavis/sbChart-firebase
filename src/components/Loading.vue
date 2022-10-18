@@ -12,7 +12,7 @@
   
   <style lang="scss" scoped>
   .loading{
-      z-index: 200;
+      z-index: 2000000000000000000000000000;
       background: rgba(0,0,0,0.6);
       @keyframes spin{
           to{

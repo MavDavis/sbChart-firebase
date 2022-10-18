@@ -19,14 +19,36 @@ export default {
     };
   },
   setup() {},
+
+
+
   created() {
-    this.checkRoute();
-    onAuthStateChanged(firebaseAuth, (user) => {
-      if (user) {
-        this.$store.commit("getUserData");
-      }
-    });
-  },
+  
+  if (window.innerWidth < 850) {
+this.$store.state.mobileScreen = true
+    } else {
+      this.$store.state.mobileScreen = false
+
+    }
+  this.checkRoute();
+  onAuthStateChanged(firebaseAuth, (user) => {
+    if(user){
+      this.$store.commit('getUserData')
+    }
+}
+)
+window.addEventListener("resize", () => {
+    if (window.innerWidth < 850) {
+this.$store.state.mobileScreen = true
+    } else {
+      this.$store.state.mobileScreen = false
+
+    }
+  })
+
+  
+},
+
   methods: {
     changeStateOptions() {
       if (this.$store.state.showOptions === true) {

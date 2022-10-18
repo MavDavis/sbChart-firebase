@@ -1,5 +1,5 @@
 <template>
-    <section class="h-full w-full relative flex flex-col items-center justify-center md:py-0 py-11">
+    <section class="h-full w-full relative flex flex-col items-center justify-center overflow-y-scroll md:py-0 py-11">
 <div  class="rounded  h-fit  w-full relative px-5 py-4 bg-white mb-16 flex big-div xmd:flex-row flex-col  items-center">
     <div class=" relative h-full  flex sm:flex-row flex-col justify-center items-start w-fit md:mr-5">
         <div class=" relative sm:w-40 sm:h-40 w-36 h-36 bg-gray-200 rounded-full flex justify-center items-center">
@@ -8,12 +8,12 @@
         </div>
 
         <div class=" relative sm:h-40 h-20 flex justify-center items-center ml-4 sm:items-start flex-col">
-<h4 class="username md:text-2xl sm:text-xl">Hajiya Raliyat</h4>
+<h4 class="username md:text-2xl sm:text-xl">{{$store.state.userName}}</h4>
 <p class=" text-xs font-bold">User</p>
         </div>
     </div>
     <div class=" xmd:border-x border-x-0 border-y xmd:border-y-0  h-full relative profile-detail  flex py-5 xmd:py-0 px-4 mt-4 xmd:mt-0 flex-col justify-center">
-        <p class=" text-xs mb-5"><span><i class="fas fa-envelope text-black mr-3"></i> </span> Hajiyarali@gmail.com</p>
+        <p class=" text-xs mb-5"><span><i class="fas fa-envelope text-black mr-3"></i> </span> {{$store.state.userEmail}}</p>
         <p @click="edit()" class="cursor-pointer text-xs mb-5"><span><i class="fas fa-phone text-black mr-3"></i> </span> Enter a phone number</p>
         <p class=" text-xs mb-5"><span><i class="fas fa-user text-black mr-3"></i> </span> User Account</p>
         <p @click="edit()" class="cursor-pointer hover:tracking-wider text-xs mb-5"><span><i class=" fas fa-light fa-gear text-black mr-3"></i> </span> Edit Profile</p>

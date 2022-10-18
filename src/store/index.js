@@ -46,6 +46,7 @@ export default createStore({
           state.userPassWord
         )
           .then((userCredential) => {
+            state.userID =userCredential.user.uid
             localStorage.setItem("userid", userCredential.user.uid);
             state.loading = false;
             localStorage.setItem("Is-logged", false);
@@ -111,7 +112,6 @@ export default createStore({
           state.userPassWord
         )
           .then((userCredential) => {
-            console.log(userCredential.user.reloadUserInfo.localId);
             state.userID = userCredential.user.reloadUserInfo.localId;
             localStorage.setItem(
               "userid",
@@ -138,6 +138,7 @@ export default createStore({
              
             });
             state.loading = false;
+            window.location.reload()
           });
       }
     },
@@ -145,7 +146,7 @@ export default createStore({
     async getUserData(state) {
       const user = firebaseAuth.currentUser;
       let newID = localStorage.getItem("userid");
-      const docRef = doc(db, "User", newID);
+      const docRef = doc(db, "User", user.uid);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
