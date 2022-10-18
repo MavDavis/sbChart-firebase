@@ -196,6 +196,7 @@ this.$router.push('/user')
 .body {
   margin: 0;
   height: 100vh;
+  width:100vw;
   font-weight: 100;
   background: #04072e;
   -webkit-overflow-y: hidden;

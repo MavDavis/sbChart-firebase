@@ -5,6 +5,7 @@ import { signOut } from "firebase/auth";
 import { doc, setDoc, addDoc, getDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth } from "../firebase";
+import router from '../router'
 export default createStore({
   state: {
     scrolled: false,
@@ -139,6 +140,7 @@ export default createStore({
             });
             state.loading = false;
           }).then(()=>{
+           router.push('/user') 
           })
       }
     },
