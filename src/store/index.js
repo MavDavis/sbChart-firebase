@@ -138,8 +138,8 @@ export default createStore({
              
             });
             state.loading = false;
-            window.location.reload()
-          });
+          }).then(()=>{
+          })
       }
     },
    

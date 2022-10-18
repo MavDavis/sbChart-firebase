@@ -1,7 +1,8 @@
 <template>
+<div class="app overflow-hidden h-full w-full relative bg-gray-800
+">
   <div
     class="
-      bg-gray-800
       h-full
       relative
       py-5
@@ -36,7 +37,7 @@
           left-0
           top-0
           bg-gray-800
-          h-full
+          h-screen
           flex-none
         "
       >
@@ -58,9 +59,9 @@
         <UserRoutes />
       </main>
     </div>
-    <!-- <div class="w-full flex" style="height: 2vh">
-      </div> -->
+   
   </div>
+</div>
 </template>
   
   <script>
