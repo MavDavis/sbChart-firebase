@@ -6,43 +6,6 @@
 </div>
   </template>
   
-  <script>
-
-  import Loading from "../components/Loading.vue";
-  export default {
-      data() {
-          return {
-            loading:false,
-              inputField:'password'
-          };
-      },
-      components:{
-        Loading
-      },
-      created(){
-if(localStorage.getItem('userid') != undefined){
-  this.$router.push('/')
-}
-      },
-      methods: {
-        toggledInputField() {
-              if (this.inputField == "password") {
-                  this.inputField = "text";
-              }
-              else {
-                  this.inputField = "password";
-              }},
-         Login() {
-           
-             this.$store.commit('Login')
-              
-          
-             
-             
-      },
-    },
-  }
-  </script>
   
   <style lang="scss" scoped> 
      .bg-img{
@@ -189,8 +152,43 @@ Login          </h1>
   </div>
 </template>
   
-  <script>
-export default {};
+ 
+<script>
+
+import Loading from "../components/Loading.vue";
+export default {
+    data() {
+        return {
+          loading:false,
+            inputField:'password'
+        };
+    },
+    components:{
+      Loading
+    },
+    created(){
+if(localStorage.getItem('userid') != undefined){
+this.$router.push('/user')
+}
+    },
+    methods: {
+      toggledInputField() {
+            if (this.inputField == "password") {
+                this.inputField = "text";
+            }
+            else {
+                this.inputField = "password";
+            }},
+       Login() {
+         
+           this.$store.commit('Login')
+            
+        
+           
+           
+    },
+  },
+}
 </script>
   
   <style>

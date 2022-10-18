@@ -181,6 +181,7 @@
       components: { Loading },
       created(){
 if(localStorage.getItem('userid') != undefined){
+  this.$router.push('/user')
 }
       },
 
