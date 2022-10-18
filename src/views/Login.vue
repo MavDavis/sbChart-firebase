@@ -24,6 +24,7 @@
 
   
   <template>
+    <div class="body">
   <div class="light x1"></div>
   <div class="light x2"></div>
   <div class="light x3"></div>
@@ -149,7 +150,7 @@ Login          </h1>
     <div class="hidden sm:block w-1/2 bg-img">
       <div class="w-full h-full relative"></div>
     </div>
-  </div>
+  </div></div>
 </template>
   
  
@@ -191,8 +192,8 @@ this.$router.push('/user')
 }
 </script>
   
-  <style>
-body {
+  <style scoped>
+.body {
   margin: 0;
   height: 100vh;
   font-weight: 100;

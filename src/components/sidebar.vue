@@ -75,7 +75,7 @@ this.$store.state.contactUs = false
           name: "Dashboard",
           icon: "fas fa-user",
           methods: "profile",
-          id:5,
+          id:1,
           active: false,
         },
         {
@@ -90,7 +90,7 @@ this.$store.state.contactUs = false
           name: "Settings",
           icon: "fas fa-gear",
           methods: "EditProfile",
-          id:6,
+          id:3,
           active: false,
         },
     
@@ -99,6 +99,13 @@ this.$store.state.contactUs = false
           icon: "fas fa-phone",
           methods: "contactUs",
           id:4,
+          active: false,
+        },
+        {
+          name: "Logout",
+          icon: "fas fa-user",
+          methods: "Logout",
+          id:5,
           active: false,
         },
        
@@ -111,20 +118,13 @@ this.$store.state.contactUs = false
       this.li.forEach((item) => {
         item.active = false;
       });
-    if(id == 1){
-      idSearch(this.li, 1)
-    this.$router.push('/')
-    }
-    else  if(id == 2){
+ 
+    if(id == 2){
       this.$store.state.profile = false
       this.$store.state.settings = false
       this.$store.state.completeDonations = true
       this.$store.state.contactUs = false
-
-      idSearch(this.li, 2)
-    }  else  if(id == 3){
-      idSearch(this.li, 3)
-      this.$router.push('/gallery')
+     idSearch(this.li, 2)
     }  else  if(id == 4){
       idSearch(this.li, 4)
       this.$store.state.profile = false
@@ -132,21 +132,29 @@ this.$store.state.contactUs = false
       this.$store.state.completeDonations = false,
       this.$store.state.contactUs = true
       
-    }  else  if(id == 5){
+    }  else  if(id == 1){
       //write a code to check if user is registered and if he is, show give not not complete give
       this.$store.state.settings = false
       this.$store.state.completeDonations = false
       this.$store.state.profile = true
             this.$store.state.contactUs = false
 
-      idSearch(this.li, 5)
-    }  else  if(id == 6){
+      idSearch(this.li, 1)
+    }  else  if(id == 3){
       this.$store.state.settings = true
       this.$store.state.completeDonations = false
       this.$store.state.profile = false
             this.$store.state.contactUs = false
 
-      idSearch(this.li, 6)
+      idSearch(this.li, 3)
+    }
+    else  if(id == 5){
+      this.$store.state.settings = false
+      this.$store.state.completeDonations = false
+      this.$store.state.profile = false
+            this.$store.state.contactUs = false
+this.$store.commit('logout')
+      idSearch(this.li, 5)
     }
     },
 

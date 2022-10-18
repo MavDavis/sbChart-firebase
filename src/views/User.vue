@@ -2,8 +2,8 @@
   <div
     class="
       bg-gray-800
-      min-h-screen
       h-full
+      relative
       py-5
       md:pl-0
       pl-5
@@ -26,7 +26,7 @@
 
       <i v-else class="fas fa-times cursor-pointer text-2xl"></i>
     </div>
-    <div class="flex min-h-screen h-full relative">
+    <div class="flex  min-h-fit h-full relative">
       <div
         class="
           md:w-16
@@ -46,7 +46,6 @@
         class="
           body
           h-full
-          overflow-y-scroll
           md:left-16
           xmd:left-56
           bg-gray-200
@@ -56,8 +55,8 @@
           px-5
         "
       >
-          <UserRoutes />
-        </main>
+        <UserRoutes />
+      </main>
     </div>
     <!-- <div class="w-full flex" style="height: 2vh">
       </div> -->
@@ -74,6 +73,11 @@ export default {
       console.log(id);
     },
   },
+  created(){
+if(localStorage.getItem('userid') == undefined){
+this.$router.push('/')
+}
+    },
   components: { Sidebar, UserRoutes },
 };
 </script>
