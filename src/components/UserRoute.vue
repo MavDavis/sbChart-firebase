@@ -14,7 +14,7 @@
     </div>
     <div class=" xmd:border-x border-x-0 border-y xmd:border-y-0  h-full relative profile-detail  flex py-5 xmd:py-0 px-4 mt-4 xmd:mt-0 flex-col justify-center">
         <p class=" text-xs mb-5"><span><i class="fas fa-envelope text-black mr-3"></i> </span> {{$store.state.userEmail}}</p>
-        <p @click="edit()" class="cursor-pointer text-xs mb-5"><span><i class="fas fa-phone text-black mr-3"></i> </span> Enter a phone number</p>
+        <p @click="edit()" class="cursor-pointer text-xs mb-5"><span><i class="fas fa-phone text-black mr-3"></i> </span> Phone number</p>
         <p class=" text-xs mb-5"><span><i class="fas fa-user text-black mr-3"></i> </span> User Account</p>
         <p @click="edit()" class="cursor-pointer hover:tracking-wider text-xs mb-5"><span><i class=" fas fa-light fa-gear text-black mr-3"></i> </span> Edit Profile</p>
 

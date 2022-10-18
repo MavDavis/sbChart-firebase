@@ -46,6 +46,7 @@
         class="
           body
           h-full
+          overflow-y-scroll
           md:left-16
           xmd:left-56
           bg-gray-200
