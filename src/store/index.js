@@ -8,49 +8,29 @@ import { firebaseAuth } from "../firebase";
 export default createStore({
   state: {
     scrolled: false,
-    gallery:[
-      {
-        img:require('../assets/slide1.jpg'),
-        id:1
-      },  {
-        img:require('../assets/slide2.jpg'),
-        id:2
-      },  {
-        img:require('../assets/gallery.jpg'),
-        id:3
-      },  {
-        img:require('../assets/form.jpg'),
-        id:4
-      },  {
-        img:require('../assets/donate.jpg'),
-        id:5
-      },  {
-        img:require('../assets/about.jpg'),
-        id:6
-      },
-    ],
+  
     loggedOut: localStorage.getItem("Is-logged") === "true",
-mobileScreen:false,
-mobileScreenOpened:false,
+    mobileScreen: false,
+    mobileScreenOpened: false,
     showOptions: false,
     showOptions: false,
     UserInitials: "",
-    errorForDonate:"",
-    errordCheck:false,
+    errorForDonate: "",
+    errordCheck: false,
     userName: "",
-    pendingPrice:"",
+    pendingPrice: "",
     userEmail: "",
     loading: false,
     userPassWord: "",
     userID: "",
     error: false,
     errMssg: "",
-    confirmUserEmail:"",
-    profile:true,
-    settings:false,
-    completeDonations:false,
-    makeDonations:false,
-    contactus:false
+    confirmUserEmail: "",
+    profile: true,
+    settings: false,
+    completeDonations: false,
+    makeDonations: false,
+    contactus: false,
   },
   getters: {},
   mutations: {
@@ -69,14 +49,12 @@ mobileScreenOpened:false,
             localStorage.setItem("userid", userCredential.user.uid);
             state.loading = false;
             localStorage.setItem("Is-logged", false);
-            console.log(state.loggedOut);
             window.location.reload();
           })
           .catch((error) => {
             state.loading = false;
 
             state.error = true;
-
             state.errMssg = error.message;
             setTimeout(() => {
               state.error = false;
@@ -85,13 +63,12 @@ mobileScreenOpened:false,
           });
       }
     },
-        logout() {
+    logout() {
       signOut(firebaseAuth)
         .then(() => {
-          localStorage.removeItem('userid')
+          localStorage.removeItem("userid");
           window.location.reload();
           localStorage.setItem("Is-logged", true);
-
         })
         .catch((err) => {
           console.log(err);
@@ -141,6 +118,7 @@ mobileScreenOpened:false,
               userCredential.user.reloadUserInfo.localId
             );
             localStorage.setItem("Is-logged", false);
+            // window.location.reload();
 
           })
           .catch((err) => {
@@ -153,31 +131,21 @@ mobileScreenOpened:false,
             }, 10000);
           })
           .then(() => {
-            setDoc(doc(db, "Users", state.userID), {
+            setDoc(doc(db, "User", state.userID), {
               Email: state.userEmail,
               password: state.userPassWord,
               Username: state.userName,
-              transaction: [{ time: "", price: state.pendingPrice, paid: false }],
+             
             });
             state.loading = false;
-            window.location.reload();
           });
       }
     },
-
-    changedScrolledTotrue(state) {
-      state.scrolled = true;
-    },
-    changeStateshowOptions(state) {
-      state.showOptions = !state.showOptions;
-    },
-    changedScrolledTofalse(state) {
-      state.scrolled = false;
-    },
+   
     async getUserData(state) {
       const user = firebaseAuth.currentUser;
-      let newID = localStorage.getItem("userid")
-      const docRef = doc(db, "Users", newID);
+      let newID = localStorage.getItem("userid");
+      const docRef = doc(db, "User", newID);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
@@ -198,60 +166,9 @@ mobileScreenOpened:false,
         console.log("No such document!");
       }
     },
-    donateLogin(state){
-      if (
-        state.userEmail != 
-        state.confirmUserEmail
-      ){
-        state.errorForDonate  = "Email doesn't match. Enter a valid Email"
-        state.errordCheck = true
-      }else if(state.pendingPrice ===""){
-        state.errorForDonate  = " Enter a valid Amount"
-        state.errordCheck = true
-      }else{
-        state.errordCheck = false
-       let password = (generatedPassword(14));
-       state.loading = true;
-
-
-        createUserWithEmailAndPassword(
-          firebaseAuth,
-          state.userEmail,
-          password
-        )
-          .then((userCredential) => {
-            console.log(userCredential.user.reloadUserInfo.localId);
-            state.userID = userCredential.user.reloadUserInfo.localId;
-            localStorage.setItem(
-              "userid",
-              userCredential.user.reloadUserInfo.localId
-            );
-            localStorage.setItem("Is-logged", false);
-
-          })
-          .catch((err) => {
-            state.loading = false;
-            state.error = true;
-            state.errMssg = err.message;
-            setTimeout(() => {
-              state.error = false;
-              state.errMssg = "";
-            }, 10000);
-          })
-          .then(() => {
-            setDoc(doc(db, "Users", state.userID), {
-              Email: state.userEmail,
-              password: password,
-              Username: state.userName,
-              transaction: [{ time: "", price: state.pendingPrice, paid: false }],
-            });
-            state.loading = false;
-          });
-     
-      }
-    },
-    changeUserDetails(state){
-      const user = firebaseAuth.currentUser
+   
+    changeUserDetails(state) {
+      const user = firebaseAuth.currentUser;
       const docRef = doc(db, "Users", user.uid);
       const data = {
         Email: state.userEmail,
@@ -260,23 +177,18 @@ mobileScreenOpened:false,
         transaction: [{ time: "", price: state.pendingPrice, paid: false }],
       };
       setDoc(docRef, data)
-.then(docRef => {
-})
-.catch(error => {
-    console.log(error);
-})
+        .then((docRef) => {})
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
   actions: {},
   modules: {},
 });
-function generatedPassword(length){
-  // let Password = ""
-  // const validChars = "0123456789" + "abcdefghijklmnopqrstuvwxyz" + "ABCDEFGHIJKLMOPQRSTUVWXYZ" + ",.-{}+!\#$&%()+?"
-  for(let i = 0; i < length; i++){
-    let randomNumber = crypto.getRandomValues(new Uint32Array(1))[0]
-    return randomNumber
-    // randomNumber = Math.floor(randomNumber *validChars.length)
-    // Password += validChars[randomNumber]
-  }         
+function generatedPassword(length) {
+  for (let i = 0; i < length; i++) {
+    let randomNumber = crypto.getRandomValues(new Uint32Array(1))[0];
+    return randomNumber;
+  }
 }

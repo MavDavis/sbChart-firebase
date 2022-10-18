@@ -4,16 +4,16 @@
     <div class=" relative h-full  flex sm:flex-row flex-col justify-center items-start w-fit md:mr-5">
         <div class=" relative sm:w-40 sm:h-40 w-36 h-36 bg-gray-200 rounded-full flex justify-center items-center">
             <i class="fas fa-user relative text-white sm:text-8xl text-7xl "></i>
-            <i class="fas fa absolute fa-camera bg-yellow-500 text-white px-2 py-1 cursor-pointer text-xl rounded-full right-3 bottom-0"></i>
+            <i class="fas fa absolute fa-camera bg-gray-300 text-white px-2 py-1 cursor-pointer text-xl rounded-full right-3 bottom-0"></i>
         </div>
 
         <div class=" relative sm:h-40 h-20 flex justify-center items-center ml-4 sm:items-start flex-col">
-<h4 class="username md:text-2xl sm:text-xl">David Marvelous</h4>
+<h4 class="username md:text-2xl sm:text-xl">Hajiya Raliyat</h4>
 <p class=" text-xs font-bold">User</p>
         </div>
     </div>
     <div class=" xmd:border-x border-x-0 border-y xmd:border-y-0  h-full relative profile-detail  flex py-5 xmd:py-0 px-4 mt-4 xmd:mt-0 flex-col justify-center">
-        <p class=" text-xs mb-5"><span><i class="fas fa-envelope text-black mr-3"></i> </span> ekwesimarvelous@gmail.com</p>
+        <p class=" text-xs mb-5"><span><i class="fas fa-envelope text-black mr-3"></i> </span> Hajiyarali@gmail.com</p>
         <p @click="edit()" class="cursor-pointer text-xs mb-5"><span><i class="fas fa-phone text-black mr-3"></i> </span> Enter a phone number</p>
         <p class=" text-xs mb-5"><span><i class="fas fa-user text-black mr-3"></i> </span> User Account</p>
         <p @click="edit()" class="cursor-pointer hover:tracking-wider text-xs mb-5"><span><i class=" fas fa-light fa-gear text-black mr-3"></i> </span> Edit Profile</p>
@@ -58,19 +58,7 @@
       <Sbchart/>
     </div>
   </div>
-  <div class="mt-9 card-div flex md:flex-row flex-col-reverse  w-full justify-between min-h-fit">
 
-    <div class="card rounded w-full md:w-1/2 mr-4 ">
-      <Sbchart/>
-    </div>
-  <div class="card rounded h-36 overflow-hidden w-full xmd:mb-0 mb-5  md:w-1/2 mr-4 p-4">
-      <!-- <apexchart class="max-w-full max-h-full relative" type="line" :options="options" :series="series"></apexchart> -->
-      <p class="text-lg font-bold tracking-wide">
-  Login Activities:
-
-</p>    </div>
- 
-  </div>
 </div>
 <div v-if="$store.state.settings" class="card-div flex w-full justify-between h-1/2">
     <div class="profile  relative flex w-full bg-white  h-fit   items-center justify-center">
@@ -255,7 +243,7 @@
     <div class="profile  relative flex w-full bg-white  h-fit  sm:items-center items-start  justify-center pb-6">
     <div class="px-5 flex flex-col justify-center items-center w-full md:w-3/4 ">
         <h1 class="md:text-2xl sm:text-xl text-sm text-dark tracking-wider flex justify-center mt-3">
-            Complete Payments
+Donate
         </h1>
 <div class="bg-gray-200 rounded p-4 mt-4 w-full relative">
     <div class="flex items-center justify-center flex-col">    
@@ -511,9 +499,9 @@
 </template>
 
 <script>
-import CardThree from './cardThree.vue';
+import CardThree from '@/components/cardThree.vue'
 import VueApexCharts from 'vue-apexcharts'
-import Sbchart from './Sbchart.vue';
+import Sbchart from './Sbchart.vue'
 
 export default {
     components: { CardThree, VueApexCharts, Sbchart },

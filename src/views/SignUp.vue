@@ -1,13 +1,26 @@
 <template>
+    <div class='light x1'></div>
+  <div class='light x2'></div>
+  <div class='light x3'></div>
+  <div class='light x4'></div>
+  <div class='light x5'></div>
+  <div class='light x6'></div>
+  <div class='light x7'></div>
+  <div class='light x8'></div>
+  <div class='light x9'></div>
+
+
+  <!-- <div class="absolute  top-0 left-0 w-full h-full">
+    <div class="absolute-two  top-0 left-0 w-full h-full"></div></div> -->
     <Loading v-if="$store.state.loading"/>
     <div
-      class="login flex justify-center sm:justify-between items-center h-screen"
+      class="login flex justify-center sm:justify-between z-50 items-center h-screen"
     >
       <div class="w-full md:w-1/2">
-        <p class="text-sm text-dark text-center">
+        <p class="text-sm text-white text-center">
           Already have an account?
           <router-link
-            class="text-lg ml-1 font-semibold underline hover:tracking-wider"
+            class="text-lg ml-1 z-50 text-white font-semibold underline hover:tracking-wider"
             :to="{ name: 'Login' }"
             >Login
           </router-link>
@@ -16,7 +29,7 @@
           <h1 class="font-semibold tracking-wider text-xl text-center">
             Sign up
           </h1>
-          <form class="bg-white px-5 pt-6 pb-8 mb-4">
+          <form class="px-5 pt-6 pb-8 mb-4">
             <p
               v-if="$store.state.error"
               class="
@@ -26,6 +39,7 @@
                 text-red-300 text-sm
                 tracking-wide
                 font-semibold
+
               "
             >
               {{ $store.state.errMssg }}
@@ -34,7 +48,6 @@
               <i class="fas fa-user absolute top-3 left-3 text-dark z-10"></i>
               <input
                 class="
-                  bg-gray-100
                   appearance-none
                   border
                   rounded
@@ -160,7 +173,6 @@
       components: { Loading },
       created(){
 if(localStorage.getItem('userid') != undefined){
-  this.$router.push('/')
 }
       },
 
@@ -176,5 +188,8 @@ if(localStorage.getItem('userid') != undefined){
     width: 100%;
     opacity: 1;
     z-index: 100;
+  }
+  .z-50{
+    z-index: 999999999;
   }
   </style>

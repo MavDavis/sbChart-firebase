@@ -4,8 +4,8 @@
       <ul class="pl-5 mt-5 w-full h-full relative flex flex-col list-none">
         <li
         
-          :class="[item.active ? 'bg-gray-200 hover:bg-gray-200' : 'notActive hover:bg-yellow-200']"
-          class="list-style relative flex items-center"
+          :class="[item.active ? 'bg-gray-200 hover:bg-gray-200 text-black' : 'text-white notActive hover:bg-gray-200']"
+          class="list-style relative  flex items-center"
           v-for="item in li"
           :key="item.icon"
           @click="
@@ -13,7 +13,9 @@
           "
         >
           <i :class="item.icon" class="mr-1"></i>
-          <span class="md:absolute md:top-0 md:hidden  md:left-12 xmd:left-0 xmd:block md:hover:block rounded md:p-2 xmd:p-0 md:text-white md:bg-black xmd:relative xmd:text-black xmd:bg-transparent">{{ item.name }}</span>
+          <span 
+          :class="[item.active ? 'text-black' : 'text-white']"
+          class="md:absolute  md:top-0 md:hidden  md:left-12 xmd:left-0 xmd:block md:hover:block rounded md:p-2 xmd:p-0  xmd:relative xmd:bg-transparent">{{ item.name }}</span>
         </li>
       </ul>
     </nav>
@@ -22,7 +24,7 @@
             v-if="$store.state.mobileScreenOpened"
             class="
               mobileNav
-              bg-yellow-500 z-50
+              bg-gray-300 z-50
               h-full
               flex flex-col
          
@@ -35,7 +37,7 @@
           <ul class=" mt-5 w-full h-full relative flex flex-col list-none">
         <li
         
-          :class="[item.active ? 'bg-gray-300 hover:bg-gray-300 active' : 'notActive hover:bg-yellow-200']"
+          :class="[item.active ? 'bg-gray-300 hover:bg-gray-300 active' : 'notActive hover:bg-gray-200']"
           class="pl-5 w-full list-style relative flex items-center"
           v-for="item in li"
           :key="item.icon"
@@ -63,19 +65,12 @@ idSearch(this.li,2)
 this.$store.state.settings = false
 this.$store.state.contactUs = false
 
-      this.$store.state.completeDonations = true
-      this.$store.state.profile = false  },
+      this.$store.state.completeDonations = false
+      this.$store.state.profile = true  },
   data() {
     return {
       mobile:false,
       li: [
-        {
-          name: "Home",
-          icon: "fas fa-home",
-          methods: "home",
-          id:1,
-          active: false,
-        },
         {
           name: "Dashboard",
           icon: "fas fa-user",
@@ -88,7 +83,7 @@ this.$store.state.contactUs = false
           icon: "fa-solid fa-money-check-dollar",
           methods: "showPayment",
           id:2,
-          active: true,
+          active: false,
         },
        
         {
