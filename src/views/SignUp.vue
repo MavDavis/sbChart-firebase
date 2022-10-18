@@ -14,7 +14,15 @@
     <div class="absolute-two  top-0 left-0 w-full h-full"></div></div> -->
     <Loading v-if="$store.state.loading"/>
     <div
-      class="login flex justify-center sm:justify-between z-50 items-center h-screen"
+      class="  py-7
+      login
+      flex
+      justify-center
+      sm:justify-between
+      items-center
+      min-h-screen
+      relative
+      z-50"
     >
       <div class="w-full md:w-1/2">
         <p class="text-sm text-white text-center">
@@ -25,10 +33,10 @@
             >Login
           </router-link>
         </p>
+        <h1 class="font-semibold text-white tracking-wider text-xl text-center">
+          Sign up
+        </h1>
         <div class="w-full">
-          <h1 class="font-semibold tracking-wider text-xl text-center">
-            Sign up
-          </h1>
           <form class="px-5 pt-6 pb-8 mb-4">
             <p
               v-if="$store.state.error"
