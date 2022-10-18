@@ -90,7 +90,7 @@ Login          </h1>
                 w-full
                 py-2
                 px-8
-                text-white
+                text-black
                 leading-tight
                 focus:outline-none focus:shadow-outline
               "
