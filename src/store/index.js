@@ -69,8 +69,8 @@ export default createStore({
       signOut(firebaseAuth)
         .then(() => {
           localStorage.removeItem("userid");
-          window.location.reload();
           localStorage.setItem("Is-logged", true);
+          router.push('/')
         })
         .catch((err) => {
           console.log(err);
