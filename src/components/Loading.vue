@@ -1,4 +1,4 @@
-<template>
+Yea<template>
     <div class="loading top-0 l-0 w-full h-full fixed flex items-center justify-center">
       <span></span>
     </div>
@@ -12,7 +12,7 @@
   
   <style lang="scss" scoped>
   .loading{
-      z-index: 2000000000000000000000000000;
+      z-index: 20000000000000;
       background: rgba(0,0,0,0.6);
       @keyframes spin{
           to{
