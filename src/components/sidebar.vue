@@ -79,7 +79,7 @@ this.$store.state.contactUs = false
           active: false,
         },
         {
-          name: " Give",
+          name: " Pay dues",
           icon: "fa-solid fa-money-check-dollar",
           methods: "showPayment",
           id:2,

@@ -95,7 +95,7 @@ Login          </h1>
                 leading-tight
                 focus:outline-none focus:shadow-outline
               "
-              v-model="$store.state.userEmail"
+              v-model="$store.state.User.userEmail"
               type="email"
               required
               placeholder="Email"
@@ -121,7 +121,7 @@ Login          </h1>
                 leading-tight
                 focus:outline-none focus:shadow-outline
               "
-              v-model="$store.state.userPassWord"
+              v-model="$store.state.User.userPassWord"
               :type="inputField"
               placeholder="Password"
             />

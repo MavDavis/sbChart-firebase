@@ -67,10 +67,30 @@
                   leading-tight
                   focus:outline-none focus:shadow-outline
                 "
-                v-model="$store.state.userName"
+                v-model="$store.state.User.userName"
                 type="text"
                 required
                 placeholder="Enter Legal Name"
+              />
+            </div>
+            <div class="mb-4 relative">
+              <i class="fas fa-user absolute top-3 left-3 text-dark z-10"></i>
+              <input
+                class="
+                  appearance-none
+                  border
+                  rounded
+                  w-full
+                  py-2
+                  px-8
+                  text-dark
+                  leading-tight
+                  focus:outline-none focus:shadow-outline
+                "
+                v-model="$store.state.User.matricNom"
+                type="text"
+                required
+                placeholder="Enter Matric Nom"
               />
             </div>
             <div class="mb-4 relative">
@@ -93,7 +113,7 @@
                   leading-tight
                   focus:outline-none focus:shadow-outline
                 "
-                v-model="$store.state.userEmail"
+                v-model="$store.state.User.userEmail"
                 type="email"
                 required
                 placeholder="Email"
@@ -120,7 +140,7 @@
                   leading-tight
                   focus:outline-none focus:shadow-outline
                 "
-                v-model="$store.state.userPassWord"
+                v-model="$store.state.User.userPassWord"
                 :type="inputField"
                 placeholder="Password"
               />

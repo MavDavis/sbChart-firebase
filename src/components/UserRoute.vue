@@ -88,7 +88,7 @@
           "
         >
           <h4 class="username md:text-2xl sm:text-xl">
-            {{ $store.state.userName }}
+            {{ $store.state.User.userName }}
           </h4>
           <p class="text-xs font-bold">User</p>
         </div>
@@ -113,7 +113,7 @@
       >
         <p class="text-xs mb-5">
           <span><i class="fas fa-envelope text-black mr-3"></i> </span>
-          {{ $store.state.userEmail }}
+          {{ userEmail }}
         </p>
         <p @click="edit()" class="cursor-pointer text-xs mb-5">
           <span><i class="fas fa-phone text-black mr-3"></i> </span> Phone
@@ -1217,6 +1217,9 @@ export default {
       this.$store.state.profile = false;
     },
   },
+  mounted(){
+    const {userEmail, userName, }= this.$store.state.User
+  }
 };
 </script>
 

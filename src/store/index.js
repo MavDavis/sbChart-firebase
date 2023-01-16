@@ -18,12 +18,16 @@ export default createStore({
     UserInitials: "",
     errorForDonate: "",
     errordCheck: false,
-    userName: "",
+    User:{
+      userName: "",
+      userEmail: "",
+      userPassWord: "",
+      userID: "",
+      matricNom:""
+    },
     pendingPrice: "",
-    userEmail: "",
     loading: false,
-    userPassWord: "",
-    userID: "",
+    
     error: false,
     errMssg: "",
     confirmUserEmail: "",
@@ -36,22 +40,23 @@ export default createStore({
   getters: {},
   mutations: {
     Login(state) {
-      if (state.userEmail === "" || state.userPassWord === "") {
+      let {userEmail, userPassWord, userID} = state.User
+      if (userEmail === "" || userPassWord === "") {
         return;
       } else {
         state.loading = true;
 
         signInWithEmailAndPassword(
           firebaseAuth,
-          state.userEmail,
-          state.userPassWord
+          userEmail,
+          userPassWord
         )
           .then((userCredential) => {
-            state.userID =userCredential.user.uid
+            userID =userCredential.user.uid
             localStorage.setItem("userid", userCredential.user.uid);
             state.loading = false;
             localStorage.setItem("Is-logged", false);
-            window.location.reload();
+            router.push('/user')
           })
           .catch((error) => {
             state.loading = false;
@@ -65,22 +70,28 @@ export default createStore({
           });
       }
     },
-    logout() {
+    logout(state) {
+      let {userEmail, userName, userPassWord}=state.User
+if(confirm('Do you want to logout')){
       signOut(firebaseAuth)
         .then(() => {
           localStorage.removeItem("userid");
+          userEmail, userName, userPassWord = ''
           localStorage.setItem("Is-logged", true);
           router.push('/')
         })
         .catch((err) => {
           console.log(err);
         });
-    },
+    }},
     async Submit(state) {
+      let {userEmail, userPassWord, userID, matricNom, userName} = state.User
+
       if (
-        state.userEmail === "" ||
-        state.userName === "" ||
-        state.userPassWord === ""
+        userEmail === "" ||
+      userName === "" ||
+        userPassWord === "" ||
+        matricNom === ''
       ) {
         state.error = true;
         state.errMssg = "Please, fill all details.";
@@ -88,7 +99,7 @@ export default createStore({
           state.error = false;
           state.errMssg = "";
         }, 5000);
-      } else if (state.userPassWord.length < 7) {
+      } else if (userPassWord.length < 7) {
         state.error = true;
         state.errMssg = "Password must be minimum of eight characters";
         setTimeout(() => {
@@ -96,11 +107,31 @@ export default createStore({
           state.errMssg = "";
         }, 5000);
       } else if (
-        !state.userEmail.includes("@") ||
-        !state.userEmail.includes(".")
+        !userEmail.includes("@") ||
+        !userEmail.includes(".")
       ) {
         state.error = true;
         state.errMssg = "Enter a valid Email";
+        setTimeout(() => {
+          state.error = false;
+          state.errMssg = "";
+        }, 5000);
+      } else if (
+        matricNom.length !== 12 ||
+        matricNom.slice(0,2).toLowerCase() !== ("uj") ||
+       typeof matricNom.slice(6,8) !== 'string'
+      ) {
+        state.error = true;
+        state.errMssg = "Enter a valid Matric Nom";
+        setTimeout(() => {
+          state.error = false;
+          state.errMssg = "";
+        }, 5000);
+      }else if (
+      matricNom.includes('/')
+      ) {
+        state.error = true;
+        state.errMssg = "Remove all slashes";
         setTimeout(() => {
           state.error = false;
           state.errMssg = "";
@@ -109,18 +140,17 @@ export default createStore({
         state.loading = true;
         createUserWithEmailAndPassword(
           firebaseAuth,
-          state.userEmail,
-          state.userPassWord
+          userEmail,
+          userPassWord
         )
           .then((userCredential) => {
-            state.userID = userCredential.user.reloadUserInfo.localId;
+            userID = userCredential.user.reloadUserInfo.localId;
             localStorage.setItem(
               "userid",
               userCredential.user.reloadUserInfo.localId
             );
             localStorage.setItem("Is-logged", false);
-            // window.location.reload();
-
+// router.push('/user')
           })
           .catch((err) => {
             state.loading = false;
@@ -132,10 +162,11 @@ export default createStore({
             }, 10000);
           })
           .then(() => {
-            setDoc(doc(db, "User", state.userID), {
-              Email: state.userEmail,
-              password: state.userPassWord,
-              Username: state.userName,
+            setDoc(doc(db, "User", userID), {
+              Email: userEmail,
+              password: userPassWord,
+              Username: userName,
+              matricNom: matricNom.toUpperCase()
              
             });
             state.loading = false;
@@ -161,10 +192,11 @@ export default createStore({
               docSnap.data().Username.length - 1,
               docSnap.data().Username.length
             );
-        state.userEmail = docSnap.data().Email;
-        state.userName = docSnap.data().Username;
-        state.userPassWord = docSnap.data().password;
-        state.UserInitials = initial;
+      userEmail = docSnap.data().Email;
+        userName = docSnap.data().Username;
+       userPassWord = docSnap.data().password;
+       matricNom = docSnap.data().matricNom
+        UserInitials = initial;
       } else {
         console.log("No such document!");
       }
