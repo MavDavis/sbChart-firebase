@@ -11,7 +11,7 @@
     <div class="light x9"></div>
 
     <!-- <div class="absolute  top-0 left-0 w-full h-full">
-    <div class="absolute-two  top-0 left-0 w-full h-full"></div></div> -->
+      <div class="absolute-two  top-0 left-0 w-full h-full"></div></div> -->
     <Loading v-if="$store.state.loading" />
     <div
       class="py-7 login flex justify-center sm:justify-between items-center min-h-screen relative z-50"
@@ -73,6 +73,16 @@
               />
             </div>
             <div class="mb-4 relative">
+              <i class="fas fa-key absolute top-3 left-3 text-dark z-10"></i>
+              <input
+                class="bg-gray-100 appearance-none border rounded w-full py-2 px-8 text-dark leading-tight focus:outline-none focus:shadow-outline"
+                v-model="$store.state.User.key"
+                required
+                type="text"
+                placeholder="Admin key"
+              />
+            </div>
+            <div class="mb-4 relative">
               <input
                 type="checkbox"
                 @click="toggledInputField"
@@ -88,16 +98,16 @@
               />
             </div>
             <div class="flex flex-col items-center justify-between">
-           
+          
               <button
                 class="bg-black hover:tracking-wider text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
                 type="button"
-                @click="Submit()"
+                @click="AdminSubmit()"
               >
                 Create account
               </button>
-              <p class="text-lg font-normal text-white mt-2 ">
-                <router-link to="/adminSignup" class="hover:tracking-wider">Sign in as admin ?</router-link>
+              <p class="text-lg font-normal text-white mt-2">
+                <router-link to="/register" class="hover:tracking-wider">Sign in as User ?</router-link>
               </p>
             </div>
           </form>
@@ -113,6 +123,7 @@
 <script>
 import Loading from "../components/Loading.vue";
 export default {
+  name: "AdminSignup",
   data() {
     return {
       inputField: "password",
@@ -129,8 +140,8 @@ export default {
       }
     },
 
-    Submit() {
-      this.$store.commit("Submit");
+    AdminSubmit() {
+      this.$store.commit("AdminSubmit");
     },
   },
   components: { Loading },

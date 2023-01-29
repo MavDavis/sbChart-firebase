@@ -167,11 +167,11 @@ export default {
     components:{
       Loading
     },
-    created(){
-if(localStorage.getItem('userid') != undefined){
-this.$router.push('/user')
-}
-    },
+//     created(){
+// if(localStorage.getItem('userid') != undefined){
+// this.$router.push('/user')
+// }
+    // },
     methods: {
       toggledInputField() {
             if (this.inputField == "password") {

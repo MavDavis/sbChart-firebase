@@ -12,7 +12,7 @@ export default createStore({
   state: {
     scrolled: false,
     photoFileName: null,
-    saved:false,
+    saved: false,
     loggedOut: localStorage.getItem("Is-logged") === "true",
     mobileScreen: false,
     mobileScreenOpened: false,
@@ -31,6 +31,7 @@ export default createStore({
       matricNom: "",
       profileImage: null,
       phoneNumber: null,
+      key: undefined,
     },
     pendingPrice: "",
     loading: false,
@@ -164,6 +165,106 @@ export default createStore({
               matricNom: matricNom.toUpperCase(),
               phoneNumber: state.User.phoneNumber,
               profileImage: state.User.profileImage,
+              key: state.User.profileImage,
+            });
+            state.loading = false;
+          })
+          .then(() => {
+            router.push("/user");
+          });
+      }
+    },  async AdminSubmit(state) {
+      let { userEmail, userPassWord, userID, matricNom, userName,key } = state.User;
+
+      if (
+        userEmail === "" ||
+        userName === "" ||
+        userPassWord === "" ||
+        matricNom === "" ||
+        key=== undefined
+      ) {
+        state.error = true;
+        state.errMssg = "Please, fill all details.";
+        setTimeout(() => {
+          state.error = false;
+          state.errMssg = "";
+        }, 5000);
+      } 
+
+      else if (userPassWord.length < 7) {
+        state.error = true;
+        state.errMssg = "Password must be minimum of eight characters";
+        setTimeout(() => {
+          state.error = false;
+          state.errMssg = "";
+        }, 5000);
+      }
+       else if (!userEmail.includes("@") || !userEmail.includes(".")) {
+        state.error = true;
+        state.errMssg = "Enter a valid Email";
+        setTimeout(() => {
+          state.error = false;
+          state.errMssg = "";
+        }, 5000);
+      } 
+      else if (
+        matricNom.length !== 12 &&
+        matricNom.slice(0, 2).toLowerCase() !== "uj" &&
+        typeof matricNom.slice(6, 8) !== "string"
+      ) {
+        state.error = true;
+        state.errMssg = "Enter a valid Matric Nom";
+        setTimeout(() => {
+          state.error = false;
+          state.errMssg = "";
+        }, 5000);
+      } else if (matricNom.includes("/")) {
+        state.error = true;
+        state.errMssg = "Remove all slashes";
+        setTimeout(() => {
+          state.error = false;
+          state.errMssg = "";
+        }, 5000);
+      }  else if (key.toString() !== '080646444') {
+        state.error = true;
+        state.errMssg = "wrong admin key";
+        setTimeout(() => {
+          state.error = false;
+          state.errMssg = "";
+        }, 5000);
+      } 
+  
+
+      else {
+        state.loading = true;
+        createUserWithEmailAndPassword(firebaseAuth, userEmail, userPassWord)
+          .then((userCredential) => {
+            state.User.userID = userCredential.user.reloadUserInfo.localId;
+            localStorage.setItem(
+              "userid",
+              userCredential.user.reloadUserInfo.localId
+            );
+            localStorage.setItem("Is-logged", false);
+            // router.push('/user')
+          })
+          .catch((err) => {
+            state.loading = false;
+            state.error = true;
+            state.errMssg = err.message;
+            setTimeout(() => {
+              state.error = false;
+              state.errMssg = "";
+            }, 10000);
+          })
+          .then(() => {
+            setDoc(doc(db, "Users", state.User.userID), {
+              Email: userEmail,
+              password: userPassWord,
+              Username: userName,
+              matricNom: matricNom.toUpperCase(),
+              phoneNumber: state.User.phoneNumber,
+              profileImage: state.User.profileImage,
+              key: state.User.key,
             });
             state.loading = false;
           })
@@ -200,6 +301,8 @@ export default createStore({
         state.User.profileImage = docSnap.data().profileImage
           ? docSnap.data().profileImage
           : "";
+        state.User.key = docSnap.data().key
+          
         state.UserInitials = initial;
         state.loggedIn = true;
       } else {
@@ -218,15 +321,13 @@ export default createStore({
         phoneNumber: state.User.phoneNumber,
         profileImage: state.User.profileImage,
       };
-      state.saved = true
+      state.saved = true;
       setTimeout(() => {
-        state.saved = false
-      }, 5000)
-      setDoc(docRef, data)
-    
-        .catch((error) => {
-          console.log(error);
-        });
+        state.saved = false;
+      }, 5000);
+      setDoc(docRef, data).catch((error) => {
+        console.log(error);
+      });
     },
     filenameChanged(state, payload) {
       state.photoFileName = payload;

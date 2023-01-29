@@ -30,7 +30,7 @@
                   >
                   <input
                     class="bg-gray-100 appearance-none border rounded relative w-full py-2 px-2 text-dark leading-tight focus:outline-none focus:shadow-outline"
-                    v-model="this.$store.state.userName"
+                    v-model="this.$store.state.User.userName"
                     type="text"
                   />
                 </div>
@@ -43,6 +43,7 @@
                   <input
                     class="bg-gray-100 appearance-none border rounded relative w-full py-2 px-2 text-dark leading-tight focus:outline-none focus:shadow-outline"
                     type="number"
+                    v-model ="this.$store.state.User.phoneNumber"
                   />
                 </div>
               </div>
@@ -58,7 +59,7 @@
                   >
                   <input
                     class="bg-gray-100 appearance-none border rounded relative w-full py-2 px-2 text-dark leading-tight focus:outline-none focus:shadow-outline"
-                    v-model="this.$store.state.userName"
+                    v-model="this.$store.state.User.userEmail"
                     type="text"
                   />
                 </div>

@@ -1,6 +1,5 @@
 <template>
-  <div
-    v-if="$store.state.contactUs"
+ <div  v-if="$store.state.contactUs"
     class="flex items-center w-full min-h-screen bg-gray-50 dark:bg-gray-900"
   >
     <div class="container mx-auto">
@@ -106,9 +105,8 @@
       </div>
     </div>
   </div>
-</template>
-<script>
-export default {
-  name: "ContactUs",
-};
-</script>
+  </template>
+  <script>
+export default{
+    name:'ContactUs'
+}</script>
