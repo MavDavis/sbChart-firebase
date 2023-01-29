@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app" v-if="$store.state.loggedIn">
     <div v-show="!navigation"></div>
     <div @click="changeStateOptions()">
       <router-view />
@@ -7,10 +7,12 @@
 
     <div v-show="!navigation"></div>
   </div>
+  <div v-else><Loading/></div>
 </template>
 <script>
 import { firebaseAuth } from "./firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Loading from "./components/Loading.vue";
 
 export default {
   data() {
@@ -74,8 +76,8 @@ this.$store.state.mobileScreen = true
     },
   },
   components: {
-  
-  },
+    Loading
+},
 };
 </script>
 

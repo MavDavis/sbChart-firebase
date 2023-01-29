@@ -61,7 +61,7 @@ item.active = true;
   }
 export default {
   created(){
-idSearch(this.li,2)
+idSearch(this.li,1)
 this.$store.state.settings = false
 this.$store.state.contactUs = false
 
@@ -151,10 +151,10 @@ this.$store.state.contactUs = false
     else  if(id == 5){
       this.$store.state.settings = false
       this.$store.state.completeDonations = false
-      this.$store.state.profile = false
+      this.$store.state.profile = true
             this.$store.state.contactUs = false
 this.$store.commit('logout')
-      idSearch(this.li, 5)
+      idSearch(this.li, 1)
     }
     },
 
