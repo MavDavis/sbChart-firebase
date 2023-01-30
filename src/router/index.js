@@ -6,6 +6,7 @@ import Login from '../views/Login.vue'
 import ForgotPassword from '../views/forgotPassword.vue'
 import Register from '../views/SignUp.vue'
 import AdminSignup from '../views/AdminSignUp.vue'
+import Admin from  '../views/Admin.vue'
 const routes = [
   {
     path: '/',
@@ -17,6 +18,10 @@ const routes = [
     path: '/forgotPassword',
     name: 'ForgotPassword',
     component: ForgotPassword
+  },  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin
   },   {
     path: '/adminSignup',
     name: 'adminSignup',

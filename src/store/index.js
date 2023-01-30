@@ -269,7 +269,7 @@ export default createStore({
             state.loading = false;
           })
           .then(() => {
-            router.push("/user");
+            router.push("/admin");
           });
       }
     },
@@ -281,7 +281,13 @@ export default createStore({
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        console.log(docSnap.data());
+       if(docSnap.data().key){
+        router.push("/admin");
+
+       }else{
+        router.push("/user");
+
+       }
         let initial =
           docSnap.data().Username.toUpperCase().slice(0, 1) +
           docSnap

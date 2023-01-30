@@ -1,5 +1,5 @@
 <template>
-  <div class="app" >
+  <div class="app">
     <div v-show="!navigation"></div>
     <div @click="changeStateOptions()">
       <router-view />
@@ -20,34 +20,26 @@ export default {
   },
   setup() {},
 
-
-
   created() {
-  
-  if (window.innerWidth < 850) {
-this.$store.state.mobileScreen = true
-    } else {
-      this.$store.state.mobileScreen = false
-
-    }
-  this.checkRoute();
-  onAuthStateChanged(firebaseAuth, (user) => {
-    if(user){
-      this.$store.commit('getUserData')
-    }
-}
-)
-window.addEventListener("resize", () => {
     if (window.innerWidth < 850) {
-this.$store.state.mobileScreen = true
+      this.$store.state.mobileScreen = true;
     } else {
-      this.$store.state.mobileScreen = false
-
+      this.$store.state.mobileScreen = false;
     }
-  })
-
-  
-},
+    this.checkRoute();
+    onAuthStateChanged(firebaseAuth, (user) => {
+      if (user) {
+        this.$store.commit("getUserData");
+      }
+    });
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 850) {
+        this.$store.state.mobileScreen = true;
+      } else {
+        this.$store.state.mobileScreen = false;
+      }
+    });
+  },
 
   methods: {
     changeStateOptions() {
@@ -56,16 +48,17 @@ this.$store.state.mobileScreen = true
       }
     },
     checkRoute() {
-      if (
-        this.$route.name === "Login" ||
-        this.$route.name === "ForgotPassword" ||
-        this.$route.name === "User" ||
-        this.$route.name === "Register"
-      ) {
-        this.navigation = true;
-        return;
-      }
-      this.navigation = false;
+      // if (
+      //   this.$route.name === "Login" ||
+      //   this.$route.name === "ForgotPassword" ||
+      //   this.$route.name === "User" ||
+      //   this.$route.name === "Register"
+      // ) {
+      //   this.navigation = true;
+      //   return;
+      // }
+      // this.navigation = false;
+  
     },
   },
   watch: {
@@ -73,7 +66,6 @@ this.$store.state.mobileScreen = true
       this.checkRoute();
     },
   },
-
 };
 </script>
 
@@ -88,4 +80,3 @@ this.$store.state.mobileScreen = true
 li {
 }
 </style>
-
