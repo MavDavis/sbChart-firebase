@@ -24,12 +24,12 @@
         <div
           class="md:w-16 xmd:w-56 fixed z-30 left-0 top-0 bg-gray-800 h-screen flex-none"
         >
-          <Sidebar />
+          <AdminSidebar />
         </div>
         <main
           class="body h-full md:left-16 xmd:left-56 bg-gray-200 rounded-3xl relative py-7 px-5"
         >
-          <UserRoutes />
+          <AdminRoute />
         </main>
       </div>
     </div>
@@ -38,8 +38,8 @@
 </template>
 
 <script>
-import Sidebar from "@/components/sidebar.vue";
-import UserRoutes from "../components/UserRoute.vue";
+import AdminSidebar from "@/components/adminSidebar.vue";
+import AdminRoute from "../components/AdminRoute.vue";
 import Loading from "../components/Loading.vue";
 
 export default {
@@ -54,7 +54,7 @@ export default {
       this.$router.push("/");
     }
   },
-  components: { Sidebar, UserRoutes, Loading },
+  components: { AdminSidebar, AdminRoute, Loading },
 };
 </script>
 

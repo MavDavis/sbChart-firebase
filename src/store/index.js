@@ -44,6 +44,8 @@ export default createStore({
     completeDonations: false,
     makeDonations: false,
     contactus: false,
+    allPayments:false,
+    allUsers:false,
   },
   getters: {},
   mutations: {
@@ -285,6 +287,7 @@ export default createStore({
         router.push("/admin");
 
        }else{
+
         router.push("/user");
 
        }
@@ -326,6 +329,7 @@ export default createStore({
         matricNom: state.User.matricNom.toUpperCase(),
         phoneNumber: state.User.phoneNumber,
         profileImage: state.User.profileImage,
+        key:state.User.key
       };
       state.saved = true;
       setTimeout(() => {
@@ -357,6 +361,8 @@ export default createStore({
               matricNom: state.User.matricNom.toUpperCase(),
               phoneNumber: state.User.phoneNumber,
               profileImage: downloadURL,
+              key:state.User.key
+
             }).catch((error) => {
               console.log(error);
             });
