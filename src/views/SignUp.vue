@@ -10,8 +10,6 @@
     <div class="light x8"></div>
     <div class="light x9"></div>
 
-    <!-- <div class="absolute  top-0 left-0 w-full h-full">
-    <div class="absolute-two  top-0 left-0 w-full h-full"></div></div> -->
     <Loading v-if="$store.state.loading" />
     <div
       class="py-7 login flex justify-center sm:justify-between items-center min-h-screen relative z-50"
@@ -142,14 +140,14 @@ export default {
 };
 </script>
 
-<style scoped>
+ <style scoped>
+
 .body {
   margin: 0;
   height: 100vh;
-  width: 100vw;
-
+  width:100vw;
   font-weight: 100;
-  background: #04072e;
+  background: #1e6396;
   -webkit-overflow-y: hidden;
   -moz-overflow-y: hidden;
   -o-overflow-y: hidden;

@@ -1,28 +1,4 @@
-<!-- <template>
-<div class="body">
-  
-    <Loading v-if="$store.state.loading"/>
 
-</div>
-  </template>
-  
-  
-  <style lang="scss" scoped> 
-     .bg-img{
-        //   background: url('../assets/background.jpg');
-        background-size: cover;
-  background-position: center;    
-        height: 100%;
-        width: 100%;
-        opacity: 1;
-        z-index: 100;
-      
-      }
-  </style>-->
-
-
-
-  
   <template>
     <div class="body">
   <div class="light x1"></div>
@@ -192,13 +168,14 @@ export default {
 }
 </script>
   
-  <style scoped>
+ <style scoped>
+
 .body {
   margin: 0;
   height: 100vh;
   width:100vw;
   font-weight: 100;
-  background: #04072e;
+  background: #1e6396;
   -webkit-overflow-y: hidden;
   -moz-overflow-y: hidden;
   -o-overflow-y: hidden;
